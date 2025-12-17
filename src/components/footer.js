@@ -2,72 +2,74 @@ import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import CustomForm from './customForm'
+import { Link } from 'gatsby'
 
 const postUrl = process.env.GATSBY_MAIL_KEY
 
-const Footer = ({ black }) => {
-  const [emailOpen, setEmailOpen] = useState(false)
-
+const Footer = () => {
   return (
-    <footer className={black ? 'footer-black' : 'footer'}>
-      <div className='footer-link-container'>
-        <div>
-          <p>Office:</p>
+    <footer className='footer'>
+      <div className='footer-left'>
+        <div className='footer-links'>
+          <div className='footer-column'>
+            <Link to='/info' className='footer-link'>
+              Information
+            </Link>
+            <Link to='/work' className='footer-link'>
+              Work
+            </Link>
+            <Link to='/journal' className='footer-link'>
+              Journal
+            </Link>
+            <Link to='/publishing' className='footer-link'>
+              Publishing
+            </Link>
+          </div>
+          <div className='footer-column'>
+            <a href='mailto:studio@pacificpacific.pub' className='footer-link'>
+              Contact
+            </a>
+            <a
+              href='mailto:business@pacificpacific.pub'
+              className='footer-link'
+            >
+              Careers
+            </a>
+            <a
+              href='https://www.instagram.com/pacific_pacific'
+              target='_blank'
+              rel='noreferrer'
+              className='footer-link'
+            >
+              Instagram
+            </a>
+            <a
+              href='https://www.linkedin.com/company/pacificpacific/'
+              target='_blank'
+              rel='noreferrer'
+              className='footer-link'
+            >
+              Linkedin
+            </a>
+          </div>
+        </div>
+        <div className='mobile-divider'></div>
+        <div className='footer-column'>
+          <div className='footer-link footer-p'>Studio</div>
           <a
             href='https://maps.app.goo.gl/8vXst9aKP9nn7rJu5'
             target='_blank'
             rel='noreferrer'
+            className='studio-address'
           >
             161 Water St
             <br />
             New York, NY 10038
           </a>
         </div>
-        <div>
-          <p>Contact:</p>{' '}
-          <a href='mailto:studio@pacificpacific.pub'>
-            studio@pacificpacific.pub
-          </a>{' '}
-          <br />
-          <a href='mailto:business@pacificpacific.pub'>
-            business@pacificpacific.pub
-          </a>
-        </div>
-        <div>
-          <p>Social:</p>
-          <a
-            href='https://www.instagram.com/pacific_pacific'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Instagram: @pacific_pacific
-          </a>{' '}
-          <br />
-          <a
-            href='https://www.linkedin.com/company/pacificpacific/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            LinkedIn: @pacific_pacific
-          </a>
-        </div>
-
-        <button
-          onClick={() => setEmailOpen(true)}
-          className='newsletter-button'
-        >
-          <p>Newsletter:</p>
-          <p>Sign Up Here</p>
-        </button>
-        <div>&copy; Pacific {new Date().getFullYear()}</div>
-      </div>
-      <div className={`email-pop-up ${emailOpen ? 'email-pop-up-show' : ''}`}>
-        <div className='email-pop-up-container'>
-          <button className='email-pop-up-close'>
-            <AiOutlineClose
-              onClick={() => setEmailOpen(false)}
-            ></AiOutlineClose>
-          </button>
+        <div className='mobile-divider'></div>
+        <div className='footer-column'>
+          <div className='footer-link footer-p'>Mailing List</div>
           <MailchimpSubscribe
             url={postUrl}
             render={({ subscribe, status, message }) => (
@@ -75,11 +77,16 @@ const Footer = ({ black }) => {
                 status={status}
                 message={message}
                 onValidated={(formData) => subscribe(formData)}
-                setEmailOpen={setEmailOpen}
               ></CustomForm>
             )}
           />
         </div>
+      </div>
+      <div className='mobile-divider'></div>
+      <div className='footer-right'>
+        <div>&copy; Pacific {new Date().getFullYear()}</div>
+        <Link to='/privacy'>Privacy</Link>
+        <Link to='/shipping'>Shipping</Link>
       </div>
     </footer>
   )

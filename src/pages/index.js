@@ -8,9 +8,11 @@ const Index = ({ data, location }) => {
   const tiles = data.contentfulStudioHome.tiles
   return (
     <Layout location={location}>
-      {tiles.map((tile) => (
-        <HomeTile key={tile.id} project={tile}></HomeTile>
-      ))}
+      <div className='home-page-container'>
+        {tiles.map((tile) => (
+          <HomeTile key={tile.id} project={tile}></HomeTile>
+        ))}
+      </div>
     </Layout>
   )
 }

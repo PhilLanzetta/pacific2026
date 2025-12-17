@@ -3,21 +3,14 @@ import { Link } from 'gatsby'
 import Logo from '../images/logo.svg'
 import HideOnScroll from './hideOnScroll'
 
-const Header = ({ info, setBlack }) => {
+const Header = () => {
   return (
     <header>
-      <div>
-        {info ? (
-          <Link
-            to='/'
-            onMouseEnter={() => setBlack(true)}
-            onMouseLeave={() => setBlack(false)}
-          >
-            X Close
-          </Link>
-        ) : (
-          <Link to='/info'>Information</Link>
-        )}
+      <div className='desktop-menu'>
+        <Link to='/info'>Information</Link>
+        <Link to='/work'>Work</Link>
+        <Link to='/journal'>Journal</Link>
+        <Link to='/publishing'>Publishing</Link>
       </div>
       <HideOnScroll>
         <Link to='/'>

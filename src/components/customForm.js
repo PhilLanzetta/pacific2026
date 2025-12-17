@@ -2,14 +2,8 @@ import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import Loader from './loader'
 
-const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
+const CustomForm = ({ status, message, onValidated }) => {
   const [email, setEmail] = useState('')
-
-  if (status === 'success') {
-    setTimeout(() => {
-      setEmailOpen(false)
-    }, 1000)
-  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -21,7 +15,7 @@ const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
   }
 
   return (
-    <div>
+    <div className='footer-form-outer'>
       {status === 'error' && (
         <div
           className='email-pop-up-text'
@@ -29,15 +23,6 @@ const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
         />
       )}
       {status === 'sending' && <Loader></Loader>}
-      {status !== 'sending' && status !== 'error' && status !== 'success' && (
-        <h3 className='email-pop-up-text'>
-          Receive our monthly newsletter,
-          <br /> event information and more.
-        </h3>
-      )}
-      {status === 'success' && (
-        <div className='email-pop-up-text'>Thank you!</div>
-      )}
       {status !== 'success' ? (
         <form
           className='email-pop-up-form'
@@ -48,7 +33,7 @@ const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
             type='email'
             value={email}
             name='EMAIL'
-            placeholder='Email'
+            placeholder='Email...'
             onChange={handleEmailChange}
             required
           />
@@ -61,11 +46,11 @@ const CustomForm = ({ status, message, onValidated, setEmailOpen }) => {
             hidden
           />
           <button type='submit' className='email-submit-button'>
-            <BsArrowRight></BsArrowRight>
+            Sign Up
           </button>
         </form>
       ) : (
-        <div></div>
+        <div className='sign-up-thanks'>Thank You</div>
       )}
     </div>
   )
