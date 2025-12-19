@@ -413,9 +413,106 @@ header div {
   gap: var(--spacing-sm);
 }
 
-@media screen and (max-width: 600px) {
-  header {
-    padding: 20px;
+.mobile-menu,
+.mobile-placeholder {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    align-items: flex-start;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    height: 100vh;
+  }
+
+  .mobile-menu-open {
+    width: calc(100vw + 32px);
+  }
+
+  .mobile-menu-btn {
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-style: italic;
+    transform: rotate(90deg) translateY(-50%);
+    transform-origin: left;
+    background: #f7f7f7;
+    color: #000;
+    padding: 5px 15px;
+  }
+
+  .mobile-inner {
+    background: #f7f7f7;
+    color: #000;
+    overflow: hidden;
+    height: 100%;
+    transition: width 400ms;
+  }
+
+  .mobile-open {
+    width: 100%;
+  }
+
+  .mobile-inner-links {
+    padding: var(--primary-margin);
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--primary-margin);
+  }
+
+  .mobile-closed {
+    width: 0px;
+  }
+
+  .mobile-placeholder {
+    display: block;
+  }
+
+  .mobile-logo-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    mix-blend-mode: difference;
+    padding-top: var(--primary-margin);
+  }
+
+  .mobile-logo {
+    opacity: 1;
+    width: 70px;
+  }
+
+  .mobile-logo-closed {
+    opacity: 1;
+    width: 70px;
+  }
+
+  .mobile-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 50px);
+  }
+
+  .mobile-inner-lower {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xs-resp);
+    padding: var(--primary-margin);
+    display: flex;
+    flex-direction: column;
+    gap: var(--primary-margin);
+    width: 100vw;
+  }
+
+  .mobile-inner-lower a {
+    display: block;
   }
 }
 
@@ -1431,8 +1528,8 @@ Home
 
 .featured-text-container {
   position: absolute;
-  bottom: 3vw;
-  left: 3vw;
+  bottom: var(--primary-margin);
+  left: var(--primary-margin);
   z-index: 200;
   transition: all var(--fast-transition);
 }

@@ -49,7 +49,7 @@ const Footer = () => {
               rel='noreferrer'
               className='footer-link'
             >
-              Linkedin
+              LinkedIn
             </a>
           </div>
         </div>
