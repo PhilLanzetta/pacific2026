@@ -1,8 +1,9 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import HomeTile from '../components/homeTile'
+import { Fade } from 'react-awesome-reveal'
 
 const Index = ({ data, location }) => {
   const tiles = data.contentfulStudioHome.tiles
@@ -12,6 +13,15 @@ const Index = ({ data, location }) => {
         {tiles.map((tile) => (
           <HomeTile key={tile.id} project={tile}></HomeTile>
         ))}
+        <Fade triggerOnce={true}>
+          <div className='journal-cta'>
+            <h2>
+              Read more about our work through writing and essays via Pacific
+              Journal
+            </h2>
+            <Link to='/journal' className='journal-cta-link'>READ</Link>
+          </div>
+        </Fade>
       </div>
     </Layout>
   )
