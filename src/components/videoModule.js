@@ -159,7 +159,7 @@ const VideoModule = ({ content }) => {
 
   return (
     <Fade triggerOnce>
-      <div className='video-module-container normal-margin'>
+      <div className='video-module-container large-margin'>
         <div
           id={videoId}
           className='video-module'

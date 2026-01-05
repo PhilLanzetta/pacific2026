@@ -19,7 +19,7 @@ const Carousel = ({ data, slideCount }) => {
 
   return (
     <>
-      <div className='normal-margin'>
+      <div className='large-margin'>
         <Slider {...settings} ref={slideRef}>
           {data.map((image) => (
             <div key={image.id} className='carousel-link'>

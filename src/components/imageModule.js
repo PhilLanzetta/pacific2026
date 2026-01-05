@@ -11,11 +11,11 @@ const ImageModule = ({ content }) => {
       ) : (
         <div
           className={`image-module-container ${
-            content.fullBleed ? '' : 'normal-margin'
+            content.fullBleed ? '' : 'large-margin'
           }`}
         >
           {content.images.map((image, index) => (
-            <figure key={index} className={`image-module-${content.columns}`}>
+            <figure key={index} className={content.columns ? `image-module-${content.columns}` : 'image-module-figure'}>
               <GatsbyImage
                 image={image.image?.gatsbyImageData}
                 alt={image.image?.description}

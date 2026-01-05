@@ -98,6 +98,7 @@
   --body-max-width: clamp(590px, 50%, 1480px);
   --lofty-line-height: 1.35;
   --primary-margin: clamp(10px, 3vw, 30px);
+  --medium-margin: 3vw 6vw;
   --large-margin: 3vw 12vw;
 }
 
@@ -177,8 +178,81 @@ p {
   font-size: var(--font-sm-resp);
 }
 
-.normal-margin {
+.large-margin {
   margin: var(--large-margin);
+}
+
+.medium-margin {
+  margin: var(--medium-margin);
+}
+
+.primary-margin {
+  margin: var(--primary-margin);
+}
+
+.about-page-padding-top {
+  padding-top: 180px;
+}
+
+
+
+.left-aligned {
+  text-align: left;
+}
+
+.center-aligned {
+  text-align: center;
+}
+
+.right-aligned {
+  text-align: right;
+}
+
+.serif {
+  font-family: var(--font-primary);
+}
+
+.sans-serif {
+  font-family: var(--font-secondary);
+}
+
+.border-top {
+  border-top: 1px solid #000;
+}
+
+.border-right {
+  border-right: 1px solid #000;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #000;
+}
+
+.border-left {
+  border-left: 1px solid #000;
+}
+
+.outer-column-base {
+  padding: var(--primary-margin);
+}
+
+.inner-column-base {
+  display: flex;
+  gap: 20px;
+  row-gap: 40px;
+}
+
+.inner-column-base > div {
+  width: 50%;
+}
+
+.body-text p {
+  font-size: var(--font-smish-resp);
+  margin-bottom: 20px;
+}
+
+.image-module-figure {
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -188,6 +262,22 @@ p {
 
   button:hover {
     opacity: 1;
+  }
+
+  .inner-column-base > div {
+    width: 100%;
+  }
+
+  .mobile-wrap {
+    flex-wrap: wrap;
+  }
+
+  .mobile-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  .about-page-padding-top {
+    padding-top: 80px;
   }
 }
 
@@ -710,6 +800,7 @@ Footer MEDIA
   }
   .footer-links {
     justify-content: space-around;
+    padding-top: calc(var(--primary-margin) * 2);
   }
   .footer-column {
     align-items: center;
@@ -1101,7 +1192,8 @@ CASE STUDY MEDIA
     width: 100%;
   }
 
-  .normal-margin {
+  .large-margin,
+  .medium-margin {
     margin: var(--primary-margin);
   }
 
@@ -1788,17 +1880,17 @@ Home MEDIA
   }
 
   .journal-cta {
-  height: auto;
-  padding: 80px var(--primary-margin);
-}
+    height: auto;
+    padding: 80px var(--primary-margin);
+  }
 
-.journal-cta-link {
-  width: 100%;
-}
+  .journal-cta-link {
+    width: 100%;
+  }
 
-.journal-cta h2 {
-  width: 100%;
-}
+  .journal-cta h2 {
+    width: 100%;
+  }
 }
 
 /*
