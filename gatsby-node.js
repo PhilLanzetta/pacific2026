@@ -18,10 +18,19 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      allContentfulJournalEntry {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `)
 
   const caseStudies = result.data.allContentfulCaseStudy.edges
+
+  const journalEntries = result.data.allContentfulJournalEntry.edges
 
   caseStudies.forEach(({ node }) => {
     const caseStudySlug = node.slug
@@ -29,6 +38,15 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/${caseStudySlug}`,
       component: require.resolve('./src/templates/case-study-template.js'),
       context: { slug: caseStudySlug },
+    })
+  })
+
+  journalEntries.forEach(({ node }) => {
+    const journalSlug = node.slug
+    createPage({
+      path: `/journal/${journalSlug}`,
+      component: require.resolve('./src/templates/journal-template.js'),
+      context: { slug: journalSlug },
     })
   })
 }

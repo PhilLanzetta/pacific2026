@@ -1,23 +1,32 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import Logo from '../images/logo.svg'
+import journalLogo from '../images/journal_logo.svg'
 import HideOnScroll from './hideOnScroll'
 
-const Header = () => {
+const Header = ({ journal }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <header>
         <div className='desktop-menu'>
-          <Link to='/info'>Information</Link>
-          <Link to='/work'>Work</Link>
-          <Link to='/journal'>Journal</Link>
-          <Link to='/publishing'>Publishing</Link>
+          <Link to='/info' activeClassName='active-desktop-link'>
+            Information
+          </Link>
+          <Link to='/' activeClassName='active-desktop-link'>
+            Work
+          </Link>
+          <Link to='/journal' activeClassName='active-desktop-link'>
+            Journal
+          </Link>
+          <Link to='/publishing' activeClassName='active-desktop-link'>
+            Publishing
+          </Link>
         </div>
         <div className='mobile-placeholder'></div>
-        <HideOnScroll>
+        <HideOnScroll journal={journal}>
           <Link to='/'>
-            <img src={Logo} alt='Pacific'></img>
+            <img src={journal ? journalLogo : Logo} alt='Pacific'></img>
           </Link>
         </HideOnScroll>
         <div></div>
@@ -26,17 +35,20 @@ const Header = () => {
         <div
           className={`mobile-inner ${isOpen ? 'mobile-open' : 'mobile-closed'}`}
         >
-          <Link to='/' className='mobile-logo-container'>
+          <Link
+            to='/'
+            className='mobile-logo-container'
+          >
             <img
-              src={Logo}
+              src={journal ? journalLogo : Logo}
               alt='Pacific'
-              className={isOpen ? 'mobile-logo' : 'mobile-logo-closed'}
+              className={journal ? 'mobile-journal-logo' : 'mobile-logo'}
             ></img>
           </Link>
           <div className='mobile-inner-container'>
             <div className='mobile-inner-links'>
               <Link to='/info'>Information</Link>
-              <Link to='/work'>Work</Link>
+              <Link to='/'>Work</Link>
               <Link to='/journal'>Journal</Link>
               <Link to='/publishing'>Publishing</Link>
             </div>

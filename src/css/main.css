@@ -331,9 +331,14 @@ header div {
   width: 33%;
 }
 
-.header-logo {
+.header-logo,
+.journal-header-logo {
   display: flex;
   justify-content: center;
+}
+
+.journal-header-logo img {
+  width: clamp(140px, 18vw, 380px);
 }
 
 .header-logo img {
@@ -361,6 +366,10 @@ header div {
 .desktop-menu {
   display: flex;
   flex-direction: column;
+}
+
+.active-desktop-link {
+  text-decoration: underline;
 }
 
 .secondary-menu {
@@ -545,6 +554,7 @@ header div {
     left: 0;
     z-index: 300;
     height: 100vh;
+    font-size: clamp(18px, var(--font-sm-resp), 24px);
   }
 
   .mobile-menu-open {
@@ -613,9 +623,9 @@ header div {
     width: 70px;
   }
 
-  .mobile-logo-closed {
+  .mobile-journal-logo {
     opacity: 1;
-    width: 70px;
+    width: 140px;
   }
 
   .mobile-inner-container {
@@ -2197,7 +2207,8 @@ About
 ===============
 */
 
-.about-page-container {
+.about-page-container,
+.journal-page-container {
   background: #f7f7f7;
 }
 
@@ -3010,4 +3021,18 @@ PRODUCTS MEDIA
 
 .home-page-container {
   background: #000;
+}
+
+/*
+==========
+JOURNAL
+==========
+*/
+
+.journal-filter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--primary-margin);
+  font-size: clamp(12px, var(--font-sm-resp), 24px);
 }
