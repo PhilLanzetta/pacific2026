@@ -15,12 +15,23 @@ const ImageModule = ({ content }) => {
           }`}
         >
           {content.images.map((image, index) => (
-            <figure key={index} className={content.columns ? `image-module-${content.columns}` : 'image-module-figure'}>
+            <figure
+              key={index}
+              className={
+                content.columns
+                  ? `image-module-${content.columns}`
+                  : 'image-module-figure'
+              }
+            >
               <GatsbyImage
                 image={image.image?.gatsbyImageData}
                 alt={image.image?.description}
               ></GatsbyImage>
-              <figcaption className='image-caption'>{image.caption}</figcaption>
+              {image.caption && (
+                <figcaption className='image-caption'>
+                  {image.caption}
+                </figcaption>
+              )}
             </figure>
           ))}
         </div>

@@ -20,6 +20,10 @@ const ColumnModule = ({ content }) => {
     }
   }
 
+  if (content.borderPadding) {
+    outerClass.push('outer-column-padding')
+  }
+
   if (content.mobileWrap) {
     if (content.wrapReverse) {
       innerClass.push('mobile-wrap-reverse')

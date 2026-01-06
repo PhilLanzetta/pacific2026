@@ -69,6 +69,7 @@ export const query = graphql`
                 bodyTextId: id
                 alignment
                 fontFamily
+                padding
                 text {
                   childMarkdownRemark {
                     html
@@ -93,6 +94,7 @@ export const query = graphql`
           }
           mobileWrap
           wrapReverse
+          borderPadding
         }
       }
     }
