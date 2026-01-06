@@ -117,7 +117,7 @@ html {
   }
 
   :root {
-    --body-max-width: 100%;
+    --body-max-width: calc(100% - 40px);
     --primary-margin: 20px;
   }
 }
@@ -178,6 +178,11 @@ p {
   font-size: var(--font-sm-resp);
 }
 
+.large-margin-text {
+  width: var(--body-max-width);
+  margin: 0 auto 6vw auto;
+}
+
 .large-margin {
   margin: var(--large-margin);
 }
@@ -191,7 +196,7 @@ p {
 }
 
 .about-page-padding-top {
-  padding-top: 180px;
+  padding-top: calc(6vw + 100px);
 }
 
 .left-aligned {

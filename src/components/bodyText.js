@@ -5,7 +5,7 @@ const BodyText = ({ content }) => {
   const classes = ['body-text']
   if (content.padding) {
     if (content.padding === 'Large') {
-      classes.push('large-margin')
+      classes.push('large-margin-text')
     } else if (content.padding === 'Medium') {
       classes.push('medium-margin')
     } else if (content.padding === 'Small') {
