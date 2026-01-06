@@ -5,7 +5,7 @@ import Carousel from './carousel'
 
 const ImageModule = ({ content }) => {
   return (
-    <Fade triggerOnce>
+    <Fade triggerOnce className='image-module-outer'>
       {content.isACarousel ? (
         <Carousel data={content.images} slideCount={1}></Carousel>
       ) : (
@@ -26,6 +26,7 @@ const ImageModule = ({ content }) => {
               <GatsbyImage
                 image={image.image?.gatsbyImageData}
                 alt={image.image?.description}
+                className='image-module-gatsby-image'
               ></GatsbyImage>
               {image.caption && (
                 <figcaption className='image-caption'>

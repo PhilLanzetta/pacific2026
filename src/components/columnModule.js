@@ -52,7 +52,9 @@ const ColumnModule = ({ content }) => {
                 )
               } else if (item.imageId) {
                 return (
-                  <ImageModule content={item} key={item.imageId}></ImageModule>
+                  <div key={item.imageId} className={content.borderPadding ? 'image-with-margin' : 'full-bleed-image-container'}>
+                    <ImageModule content={item}></ImageModule>
+                  </div>
                 )
               } else {
                 return <div>Unknown Content</div>

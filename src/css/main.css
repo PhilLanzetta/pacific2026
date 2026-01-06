@@ -80,10 +80,10 @@
   --font-xxlg-resp: clamp(36px, calc(1rem + 8.5vw), 300px);
   --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
   --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
-  --font-md-resp: calc(1rem + 1vw);
+  --font-md-resp: clamp(20px, calc(1rem + 1vw), 80px);
   --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 24px);
-  --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 20px);
-  --font-xs-resp: clamp(12px, calc(0.5rem + 0.25vw), 16px);
+  --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 18px);
+  --font-xs-resp: clamp(10px, calc(0.5rem + 0.25vw), 16px);
   --spacing-lg: 4rem;
   --spacing-md: 2rem;
   --spacing-sm: 1rem;
@@ -241,8 +241,7 @@ p {
 
 .inner-column-base {
   display: flex;
-  gap: 20px;
-  row-gap: 40px;
+  gap: 30px;
 }
 
 .inner-column-base > div {
@@ -254,12 +253,30 @@ p {
   margin-bottom: 20px;
 }
 
-.image-module-figure {
+.image-module-figure,
+.full-bleed-image-container {
   width: 100%;
+  height: 100%;
+}
+
+.image-with-margin {
+  margin-bottom: 10px;
 }
 
 .about-mail-form {
-  margin-bottom: 6vw;
+  padding: var(--primary-margin);
+  padding-top: 0;
+  padding-bottom: 6vw;
+}
+
+.image-module-outer {
+  width: 100%;
+  height: 100%;
+}
+
+.image-module-gatsby-image {
+  min-height: 100%;
+  min-width: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -535,9 +552,8 @@ header div {
   }
 
   .mobile-menu-btn {
-    font-family: var(--font-primary);
+    font-family: var(--font-secondary);
     font-weight: bold;
-    font-style: italic;
     transform: rotate(90deg) translateY(-50%);
     transform-origin: left;
     background: #ffffff;
@@ -547,6 +563,10 @@ header div {
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     margin-left: -1px;
+  }
+
+  .mobile-menu-btn:hover {
+    opacity: 1;
   }
 
   .mobile-inner {
@@ -802,18 +822,21 @@ Footer MEDIA
   footer {
     border-top: 1px solid #000;
   }
+
   .footer-left {
     flex-direction: column;
     width: 100%;
-    gap: none;
+    gap: 0;
   }
+
   .footer-links {
     justify-content: space-around;
-    padding-top: calc(var(--primary-margin) * 2);
+    padding-top: 10px;
   }
+
   .footer-column {
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
 
   .footer-right {
@@ -835,7 +858,7 @@ Footer MEDIA
   }
 
   .footer-p {
-    margin-bottom: var(--primary-margin);
+    margin-bottom: 0;
   }
 
   .email-pop-up-form {
@@ -1083,6 +1106,8 @@ Case Study
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 3vw;
+  height: 100%;
+  width: 100%;
 }
 
 .image-module-1 {
@@ -2171,6 +2196,10 @@ PRESS
 About
 ===============
 */
+
+.about-page-container {
+  background: #f7f7f7;
+}
 
 .about-page {
   padding-top: 100px;

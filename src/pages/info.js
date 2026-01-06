@@ -11,29 +11,31 @@ const Info = ({ data }) => {
   const { content } = data.contentfulAboutPageRework
   return (
     <Layout>
-      <div className='about-page-padding-top'></div>
-      {content.map((item) => {
-        if (item.bodyTextId) {
-          return <BodyText content={item} key={item.bodyTextId}></BodyText>
-        } else if (item.columnId) {
-          return (
-            <ColumnModule key={item.columnId} content={item}></ColumnModule>
-          )
-        } else {
-          return <div>Unknown Content</div>
-        }
-      })}
-      <div className='about-mail-form'>
-        <MailchimpSubscribe
-          url={postUrl}
-          render={({ subscribe, status, message }) => (
-            <CustomForm
-              status={status}
-              message={message}
-              onValidated={(formData) => subscribe(formData)}
-            ></CustomForm>
-          )}
-        />
+      <div className='about-page-container'>
+        <div className='about-page-padding-top'></div>
+        {content.map((item) => {
+          if (item.bodyTextId) {
+            return <BodyText content={item} key={item.bodyTextId}></BodyText>
+          } else if (item.columnId) {
+            return (
+              <ColumnModule key={item.columnId} content={item}></ColumnModule>
+            )
+          } else {
+            return <div>Unknown Content</div>
+          }
+        })}
+        <div className='about-mail-form'>
+          <MailchimpSubscribe
+            url={postUrl}
+            render={({ subscribe, status, message }) => (
+              <CustomForm
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
+              ></CustomForm>
+            )}
+          />
+        </div>
       </div>
     </Layout>
   )
