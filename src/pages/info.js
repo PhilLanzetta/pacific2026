@@ -3,8 +3,11 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import BodyText from '../components/bodyText'
 import ColumnModule from '../components/columnModule'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import CustomForm from '../components/customForm'
 
 const Info = ({ data }) => {
+  const postUrl = process.env.GATSBY_MAIL_KEY
   const { content } = data.contentfulAboutPageRework
   return (
     <Layout>
@@ -20,6 +23,18 @@ const Info = ({ data }) => {
           return <div>Unknown Content</div>
         }
       })}
+      <div className='about-mail-form'>
+        <MailchimpSubscribe
+          url={postUrl}
+          render={({ subscribe, status, message }) => (
+            <CustomForm
+              status={status}
+              message={message}
+              onValidated={(formData) => subscribe(formData)}
+            ></CustomForm>
+          )}
+        />
+      </div>
     </Layout>
   )
 }

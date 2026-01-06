@@ -194,8 +194,6 @@ p {
   padding-top: 180px;
 }
 
-
-
 .left-aligned {
   text-align: left;
 }
@@ -253,6 +251,10 @@ p {
 
 .image-module-figure {
   width: 100%;
+}
+
+.about-mail-form {
+  margin: var(--primary-margin);
 }
 
 @media screen and (max-width: 600px) {
@@ -726,14 +728,14 @@ Footer
   width: clamp(100px, 100%, 250px);
   display: flex;
   border: 1px solid grey;
-  background: #f7f7f7;
+  background: transparent;
   padding: 2px;
   margin: 0 auto;
   font-family: var(--font-secondary);
 }
 
 .email-pop-up-form input[type='email'] {
-  background: #f7f7f7;
+  background: transparent;
   color: #000;
   margin: 0;
   padding: 0 5px;
@@ -804,7 +806,7 @@ Footer MEDIA
   }
   .footer-column {
     align-items: center;
-    gap: 5px;
+    gap: 10px;
   }
 
   .footer-right {
