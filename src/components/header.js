@@ -35,22 +35,31 @@ const Header = ({ journal }) => {
         <div
           className={`mobile-inner ${isOpen ? 'mobile-open' : 'mobile-closed'}`}
         >
-          <Link
-            to='/'
-            className='mobile-logo-container'
-          >
+          <Link to='/' className='mobile-logo-container'>
             <img
               src={journal ? journalLogo : Logo}
               alt='Pacific'
               className={journal ? 'mobile-journal-logo' : 'mobile-logo'}
             ></img>
           </Link>
-          <div className='mobile-inner-container'>
+          <div
+            className={`mobile-inner-container ${
+              isOpen ? 'mobile-inner-open' : 'mobile-inner-closed'
+            }`}
+          >
             <div className='mobile-inner-links'>
-              <Link to='/info'>Information</Link>
-              <Link to='/'>Work</Link>
-              <Link to='/journal'>Journal</Link>
-              <Link to='/publishing'>Publishing</Link>
+              <Link to='/info' onClick={() => setIsOpen(false)}>
+                Information
+              </Link>
+              <Link to='/' onClick={() => setIsOpen(false)}>
+                Work
+              </Link>
+              <Link to='/journal' onClick={() => setIsOpen(false)}>
+                Journal
+              </Link>
+              <Link to='/publishing' onClick={() => setIsOpen(false)}>
+                Publishing
+              </Link>
             </div>
             <div className='mobile-inner-lower'>
               <div>
