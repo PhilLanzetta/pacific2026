@@ -601,6 +601,10 @@ header div {
     gap: var(--primary-margin);
   }
 
+  .mobile-inner-links button {
+    text-align: left;
+  }
+
   .mobile-placeholder {
     display: block;
   }

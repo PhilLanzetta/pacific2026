@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import Logo from '../images/logo.svg'
 import journalLogo from '../images/journal_logo.svg'
 import HideOnScroll from './hideOnScroll'
@@ -35,31 +35,81 @@ const Header = ({ journal }) => {
         <div
           className={`mobile-inner ${isOpen ? 'mobile-open' : 'mobile-closed'}`}
         >
-          <Link to='/' className='mobile-logo-container'>
-            <img
-              src={journal ? journalLogo : Logo}
-              alt='Pacific'
-              className={journal ? 'mobile-journal-logo' : 'mobile-logo'}
-            ></img>
-          </Link>
+          {journal ? (
+            <button
+              onClick={() => {
+                setIsOpen(false)
+                setTimeout(() => {
+                  navigate('/journal')
+                }, 500)
+              }}
+              className='mobile-logo-container'
+            >
+              <img
+                src={journalLogo}
+                alt='Pacific'
+                className='mobile-journal-logo'
+              ></img>
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setIsOpen(false)
+                setTimeout(() => {
+                  navigate('/')
+                }, 500)
+              }}
+              className='mobile-logo-container'
+            >
+              <img src={Logo} alt='Pacific' className='mobile-logo'></img>
+            </button>
+          )}
           <div
             className={`mobile-inner-container ${
               isOpen ? 'mobile-inner-open' : 'mobile-inner-closed'
             }`}
           >
             <div className='mobile-inner-links'>
-              <Link to='/info' onClick={() => setIsOpen(false)}>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/info')
+                  }, 500)
+                }}
+              >
                 Information
-              </Link>
-              <Link to='/' onClick={() => setIsOpen(false)}>
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/')
+                  }, 500)
+                }}
+              >
                 Work
-              </Link>
-              <Link to='/journal' onClick={() => setIsOpen(false)}>
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/journal')
+                  }, 500)
+                }}
+              >
                 Journal
-              </Link>
-              <Link to='/publishing' onClick={() => setIsOpen(false)}>
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/books')
+                  }, 500)
+                }}
+              >
                 Publishing
-              </Link>
+              </button>
             </div>
             <div className='mobile-inner-lower'>
               <div>
