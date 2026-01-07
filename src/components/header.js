@@ -25,7 +25,7 @@ const Header = ({ journal }) => {
         </div>
         <div className='mobile-placeholder'></div>
         <HideOnScroll journal={journal}>
-          <Link to='/'>
+          <Link to={journal ? '/journal' : '/'}>
             <img src={journal ? journalLogo : Logo} alt='Pacific'></img>
           </Link>
         </HideOnScroll>

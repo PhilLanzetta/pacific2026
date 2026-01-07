@@ -3030,8 +3030,53 @@ JOURNAL
 
 .journal-filter {
   position: absolute;
+  z-index: 600;
   top: 0;
   right: 0;
   padding: var(--primary-margin);
-  font-size: clamp(12px, var(--font-sm-resp), 24px);
+  font-size: var(--font-smish-resp);
+  font-family: var(--font-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.filter-btn-header, .filter-btn {
+  text-transform: uppercase;
+}
+
+.journal-sub-heading {
+  font-family: var(--font-secondary);
+  text-align: center;
+  padding-top: calc(100px + 3vw);
+}
+
+.journal-tile-container {
+  padding-top: 40px;
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 700px) {
+  .journal-filter {
+    position: static;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    gap: 20px;
+  }
+
+  .filter-btn-header {
+    width: 100%;
+  }
+
+  .filter-btn {
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 10px;
+    width: calc(50% - 10px);
+  }
 }
