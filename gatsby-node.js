@@ -25,12 +25,21 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      allShopifyProduct {
+        edges {
+          node {
+            handle
+          }
+        }
+      }
     }
   `)
 
   const caseStudies = result.data.allContentfulCaseStudy.edges
 
   const journalEntries = result.data.allContentfulJournalEntry.edges
+
+  const products = result.data.allShopifyProduct.edges
 
   caseStudies.forEach(({ node }) => {
     const caseStudySlug = node.slug
@@ -47,6 +56,15 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/journal/${journalSlug}`,
       component: require.resolve('./src/templates/journal-template.js'),
       context: { slug: journalSlug },
+    })
+  })
+
+  products.forEach(({ node }) => {
+    const productSlug = node.handle
+    createPage({
+      path: `/books/${productSlug}`,
+      component: require.resolve('./src/templates/product-template.js'),
+      context: { handle: productSlug },
     })
   })
 }

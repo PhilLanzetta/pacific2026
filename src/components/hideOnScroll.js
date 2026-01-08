@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const HideOnScroll = ({ children, journal }) => {
+const HideOnScroll = ({ children, journal, books }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
 
@@ -17,7 +17,7 @@ const HideOnScroll = ({ children, journal }) => {
 
   return (
     <div
-      className={`${journal ? 'journal-header-logo' : 'header-logo'} ${
+      className={`${journal || books ? 'journal-header-logo' : 'header-logo'} ${
         visible ? 'header-show' : 'header-hide'
       }`}
     >

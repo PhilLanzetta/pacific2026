@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import Logo from '../images/logo.svg'
 import journalLogo from '../images/journal_logo.svg'
+import booksLogo from '../images/books_logo.svg'
 import HideOnScroll from './hideOnScroll'
 
-const Header = ({ journal }) => {
+const Header = ({ journal, books }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
@@ -19,14 +20,17 @@ const Header = ({ journal }) => {
           <Link to='/journal' activeClassName='active-desktop-link'>
             Journal
           </Link>
-          <Link to='/publishing' activeClassName='active-desktop-link'>
+          <Link to='/books' activeClassName='active-desktop-link'>
             Publishing
           </Link>
         </div>
         <div className='mobile-placeholder'></div>
-        <HideOnScroll journal={journal}>
-          <Link to={journal ? '/journal' : '/'}>
-            <img src={journal ? journalLogo : Logo} alt='Pacific'></img>
+        <HideOnScroll journal={journal} books={books}>
+          <Link to={journal ? '/journal' : books ? '/books' : '/'}>
+            <img
+              src={journal ? journalLogo : books ? booksLogo : Logo}
+              alt='Pacific'
+            ></img>
           </Link>
         </HideOnScroll>
         <div></div>
@@ -47,6 +51,22 @@ const Header = ({ journal }) => {
             >
               <img
                 src={journalLogo}
+                alt='Pacific'
+                className='mobile-journal-logo'
+              ></img>
+            </button>
+          ) : books ? (
+            <button
+              onClick={() => {
+                setIsOpen(false)
+                setTimeout(() => {
+                  navigate('/books')
+                }, 500)
+              }}
+              className='mobile-logo-container'
+            >
+              <img
+                src={booksLogo}
                 alt='Pacific'
                 className='mobile-journal-logo'
               ></img>

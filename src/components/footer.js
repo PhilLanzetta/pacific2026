@@ -21,7 +21,7 @@ const Footer = () => {
             <Link to='/journal' className='footer-link'>
               Journal
             </Link>
-            <Link to='/publishing' className='footer-link'>
+            <Link to='/books' className='footer-link'>
               Publishing
             </Link>
           </div>

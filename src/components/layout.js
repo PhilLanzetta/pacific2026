@@ -4,9 +4,10 @@ import Footer from './footer'
 
 const Layout = ({ children, location }) => {
   const journal = location && location.pathname.includes('journal')
+  const books = location && location.pathname.includes('books')
   return (
     <>
-      <Header journal={journal}></Header>
+      <Header journal={journal} books={books}></Header>
       <main>{children}</main>
       <Footer></Footer>
     </>
