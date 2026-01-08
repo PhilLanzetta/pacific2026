@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { BsArrowRight } from 'react-icons/bs'
 import Slider from 'react-slick'
-import Seo from '../components/seo'
+import Seo from '../../components/seo'
 
 function NextArrow(props) {
   const { onClick } = props
