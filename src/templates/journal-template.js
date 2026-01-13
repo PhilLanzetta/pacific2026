@@ -5,9 +5,18 @@ import BodyText from '../components/bodyText'
 import ColumnModule from '../components/columnModule'
 import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
+import { Fade } from 'react-awesome-reveal'
+import JournalTile from '../components/journalTile'
 
 const JournalTemplate = ({ data, location }) => {
-  const { title, subtitle, category, content } = data.contentfulJournalEntry
+  const { title, subtitle, category, content, projectCredits, related } =
+    data.contentfulJournalEntry
+
+  const formatter = new Intl.ListFormat('en', {
+    style: 'short',
+    type: 'conjunction',
+  })
+
   return (
     <Layout location={location}>
       <div className='journal-page-container'>
@@ -17,9 +26,7 @@ const JournalTemplate = ({ data, location }) => {
           <h2 className='journal-subheading'>{subtitle}</h2>
           {category && (
             <div className='category-container'>
-              {category.map((item, index) => (
-                <div key={index}>{item}</div>
-              ))}
+              {formatter.format(category)}
             </div>
           )}
         </div>
@@ -50,6 +57,36 @@ const JournalTemplate = ({ data, location }) => {
               }
             })}
           </div>
+        )}
+        {projectCredits && (
+          <Fade triggerOnce>
+            <div className='large-margin-text'>
+              <p>Project Credits</p>
+              <div className='journal-credits-table'>
+                {projectCredits.map((credit, index) => (
+                  <div key={index} className='journal-credit'>
+                    {credit}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Fade>
+        )}
+        {related && (
+          <Fade triggerOnce>
+            <div className='related-journal'>
+              <p>Related</p>
+              <div className='related-journal-tile-container'>
+                {related.map((item) => (
+                  <JournalTile
+                    tile={item}
+                    key={item.id}
+                    related={true}
+                  ></JournalTile>
+                ))}
+              </div>
+            </div>
+          </Fade>
         )}
       </div>
     </Layout>
@@ -136,6 +173,18 @@ export const query = graphql`
           videoLink
           fullBleed
           title
+        }
+      }
+      projectCredits
+      related {
+        id
+        slug
+        title
+        subtitle
+        category
+        tileImage {
+          description
+          gatsbyImageData
         }
       }
     }
