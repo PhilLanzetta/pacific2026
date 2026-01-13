@@ -159,7 +159,11 @@ const VideoModule = ({ content }) => {
 
   return (
     <Fade triggerOnce>
-      <div className='video-module-container large-margin'>
+      <div
+        className={`video-module-container ${
+          content.fullBleed ? 'fullbleed-video' : 'large-padding'
+        }`}
+      >
         <div
           id={videoId}
           className='video-module'

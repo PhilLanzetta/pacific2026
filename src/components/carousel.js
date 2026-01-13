@@ -19,7 +19,7 @@ const Carousel = ({ data, slideCount }) => {
 
   return (
     <>
-      <div className='large-margin'>
+      <div className='large-padding carousel'>
         <Slider {...settings} ref={slideRef}>
           {data.map((image) => (
             <div key={image.id} className='carousel-link'>
@@ -32,24 +32,34 @@ const Carousel = ({ data, slideCount }) => {
             </div>
           ))}
         </Slider>
-        {width > 600 && (
-          <div className='carousel-arrows-container'>
-            <button
-              className='pub-arrow'
-              onClick={() => slideRef.current.slickPrev()}
-              aria-label='go to previous'
+        <div className='carousel-arrows-container'>
+          <button
+            className='pub-arrow'
+            onClick={() => slideRef.current.slickPrev()}
+            aria-label='go to previous'
+          >
+            <svg
+              viewBox='0 0 44 44'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <BsArrowLeft></BsArrowLeft>
-            </button>
-            <button
-              className='pub-arrow'
-              onClick={() => slideRef.current.slickNext()}
-              aria-label='go to next'
+              <path d='M44 44H0V0H44V44ZM1 43H43V1H1V43ZM27.9121 17.7725L18.9473 21.2881L18.1709 21.5371L18.9473 21.8008L27.9121 25.2578V28.1289L15.4902 22.5771V20.4385L27.9121 14.9014V17.7725Z' />
+            </svg>
+          </button>
+          <button
+            className='pub-arrow'
+            onClick={() => slideRef.current.slickNext()}
+            aria-label='go to next'
+          >
+            <svg
+              viewBox='0 0 44 44'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <BsArrowRight></BsArrowRight>
-            </button>
-          </div>
-        )}
+              <path d='M44 44H0V0H44V44ZM1 43H43V1H1V43ZM29.542 20.4238V22.5625L16.6074 28.1143V25.3018L26.085 21.7275L26.9639 21.4785L26.085 21.2002L16.6074 17.6846V14.8867L29.542 20.4238Z' />
+            </svg>
+          </button>
+        </div>
       </div>
     </>
   )

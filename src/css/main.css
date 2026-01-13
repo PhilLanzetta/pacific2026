@@ -187,6 +187,10 @@ p {
   margin: var(--large-margin);
 }
 
+.large-padding {
+  padding: 0 12vw;
+}
+
 .medium-margin {
   margin: var(--medium-margin);
 }
@@ -1240,6 +1244,10 @@ CASE STUDY MEDIA
     margin: var(--primary-margin);
   }
 
+  .large-padding {
+    padding: 0;
+  }
+
   .case-scope {
     margin-top: -12vw;
   }
@@ -1783,7 +1791,15 @@ Home
   align-items: center;
 }
 
+.carousel {
+  position: relative;
+}
+
 .carousel-arrows-container {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1792,6 +1808,10 @@ Home
 .pub-arrow svg {
   height: 30px;
   width: 30px;
+}
+
+.pub-arrow svg path {
+  fill: #000;
 }
 
 .prev-button,
@@ -3067,7 +3087,8 @@ JOURNAL
   align-items: flex-end;
 }
 
-.filter-btn-header, .filter-btn {
+.filter-btn-header,
+.filter-btn {
   text-transform: uppercase;
 }
 
@@ -3080,6 +3101,62 @@ JOURNAL
 .journal-tile-container {
   padding-top: 40px;
   min-height: 100vh;
+}
+
+.journal-page-container {
+  background: #f7f7f7;
+  padding: var(--primary-margin);
+  min-height: 100vh;
+}
+
+.journal-page-padding-top {
+  padding-top: calc(100px + 6vw);
+}
+
+.journal-heading {
+  width: var(--body-max-width);
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+.journal-heading h1,
+.journal-heading h2 {
+  font-weight: 100;
+  font-size: var(--font-lg-resp);
+}
+
+.journal-subheading {
+  font-style: italic;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-secondary);
+}
+
+.category-container div::after {
+  content: ', ';
+}
+
+.category-container div:last-of-type::after {
+  content: '';
+}
+
+.category-container div:nth-last-child(2)::after {
+  content: ' & ';
+}
+
+.journal-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+
+.fullbleed-video {
+  width: 100vw;
+  margin-left: calc(var(--primary-margin) * -1);
 }
 
 @media screen and (max-width: 700px) {
@@ -3104,5 +3181,19 @@ JOURNAL
     border-radius: 4px;
     padding: 10px;
     width: calc(50% - 10px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-arrows-container {
+    padding: 0 10px;
+  }
+  .pub-arrow svg path {
+    fill: #fff;
+  }
+
+  .carousel {
+    width: 100vw;
+    margin-left: calc(var(--primary-margin) * -1);
   }
 }

@@ -11,15 +11,15 @@ const ImageModule = ({ content }) => {
       ) : (
         <div
           className={`image-module-container ${
-            content.fullBleed ? '' : 'large-margin'
+            content.fullBleed || content.imgColumns > 1 ? '' : 'large-padding'
           }`}
         >
           {content.images.map((image, index) => (
             <figure
               key={index}
               className={
-                content.columns
-                  ? `image-module-${content.columns}`
+                content.imgColumns
+                  ? `image-module-${content.imgColumns}`
                   : 'image-module-figure'
               }
             >
