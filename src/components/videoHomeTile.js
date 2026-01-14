@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 import useOnScreen from '../utils/useOnScreen'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const VideoHomeTile = ({ project }) => {
+const VideoHomeTile = ({ project, tile }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const elementRef = useRef(null)
@@ -27,15 +27,15 @@ const VideoHomeTile = ({ project }) => {
             className='video-poster'
           >
             <GatsbyImage
-              image={project.videoPosterImage?.gatsbyImageData}
-              alt={project.videoPosterImage?.description}
+              image={project ? project.videoPosterImage?.gatsbyImageData : tile.tileImage.gatsbyImageData}
+              alt={project ? project.videoPosterImage?.description : tile.tileImage.description}
               className='poster-image'
             ></GatsbyImage>
           </motion.div>
         )}
       </AnimatePresence>
       <ReactPlayer
-        url={`https://player.vimeo.com/video/${project.vimeoId}`}
+        url={project ? `https://player.vimeo.com/video/${project.vimeoId}` : tile.videoLinkUrl}
         width={'100%'}
         height={'100%'}
         className='module-video-player'

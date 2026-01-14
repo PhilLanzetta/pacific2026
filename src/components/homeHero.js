@@ -3,7 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import useOnScreen from '../utils/useOnScreen'
 import ReactPlayer from 'react-player'
 
-const HomeHero = ({ videoId, poster, landscape, fontColor, sound }) => {
+const HomeHero = ({ videoId, poster, landscape, fontColor, sound, url }) => {
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
@@ -25,7 +25,7 @@ const HomeHero = ({ videoId, poster, landscape, fontColor, sound }) => {
         alt={poster?.description}
         className={`poster-image ${!isLoading && 'fade-away'}`}
       ></GatsbyImage>
-      <div className='hero-video-container'>
+      <div className={url ? 'journal-video-container' : 'hero-video-container'}>
         <ReactPlayer
           style={{
             position: 'absolute',
@@ -36,10 +36,14 @@ const HomeHero = ({ videoId, poster, landscape, fontColor, sound }) => {
             opacity: 1,
             zIndex: 5,
           }}
-          url={`https://player.vimeo.com/video/${videoId}`}
-          width={'100vw'}
+          url={url ? url : `https://player.vimeo.com/video/${videoId}`}
+          width={url ? '100%' : '100vw'}
           height={
-            landscape === true ? 'calc(100vw * 9 / 16)' : 'calc(100vw * 16 / 9)'
+            url
+              ? '100%'
+              : landscape === true
+              ? 'calc(100vw * 9 / 16)'
+              : 'calc(100vw * 16 / 9)'
           }
           controls={false}
           playing={playing}

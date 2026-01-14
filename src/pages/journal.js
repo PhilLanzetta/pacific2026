@@ -63,7 +63,18 @@ const Journal = ({ location, data }) => {
           print platform where we share...
         </div>
         <div className='journal-filter'>
-          <button className='filter-btn-header'>Filter:</button>
+          <button
+            className='filter-btn-header'
+            onClick={() => setActiveFilters([])}
+          >
+            {activeFilters.length > 0 ? (
+              <span>
+                <em>Clear Filter</em>
+              </span>
+            ) : (
+              <span>Filter:</span>
+            )}
+          </button>
           {filters.map((item, index) => (
             <button
               key={index}
