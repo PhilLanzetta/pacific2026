@@ -19,13 +19,13 @@ const HomeHero = ({ videoId, poster, landscape, fontColor, sound, url }) => {
   }, [isOnScreen])
 
   return (
-    <div className='hero-container' ref={elementRef}>
+    <div className={url ? 'journal-video-container' : 'hero-container'} ref={elementRef}>
       <GatsbyImage
         image={poster?.gatsbyImageData}
         alt={poster?.description}
         className={`poster-image ${!isLoading && 'fade-away'}`}
       ></GatsbyImage>
-      <div className={url ? 'journal-video-container' : 'hero-video-container'}>
+      <div className={url ? '' : 'hero-video-container'}>
         <ReactPlayer
           style={{
             position: 'absolute',

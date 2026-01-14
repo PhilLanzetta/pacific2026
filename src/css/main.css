@@ -3228,6 +3228,8 @@ JOURNAL
 .journal-video-container {
   width: 100%;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
 }
 
 .journal-content-container {
