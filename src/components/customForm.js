@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import Loader from './loader'
 
-const CustomForm = ({ status, message, onValidated }) => {
+const CustomForm = ({ status, message, onValidated, about }) => {
   const [email, setEmail] = useState('')
 
   const handleEmailChange = (e) => {
@@ -25,7 +25,7 @@ const CustomForm = ({ status, message, onValidated }) => {
       {status === 'sending' && <Loader></Loader>}
       {status !== 'success' ? (
         <form
-          className='email-pop-up-form'
+          className={about ? 'about-email-form' : 'email-pop-up-form'}
           onSubmit={(e) => handleFormSubmit(e)}
         >
           <input
@@ -45,7 +45,10 @@ const CustomForm = ({ status, message, onValidated }) => {
             readOnly
             hidden
           />
-          <button type='submit' className='email-submit-button'>
+          <button
+            type='submit'
+            className={about ? 'about-email-submit' : 'email-submit-button'}
+          >
             Sign Up
           </button>
         </form>

@@ -32,6 +32,7 @@ const Info = ({ data }) => {
                 status={status}
                 message={message}
                 onValidated={(formData) => subscribe(formData)}
+                about={true}
               ></CustomForm>
             )}
           />

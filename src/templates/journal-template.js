@@ -60,7 +60,7 @@ const JournalTemplate = ({ data, location }) => {
         )}
         {projectCredits && (
           <Fade triggerOnce>
-            <div className='large-margin-text'>
+            <div className='journal-credits'>
               <p>Project Credits</p>
               <div className='journal-credits-table'>
                 {projectCredits.map((credit, index) => (

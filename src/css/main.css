@@ -81,9 +81,11 @@
   --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
   --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
   --font-md-resp: clamp(20px, calc(1rem + 1vw), 80px);
+  --font-md: 50px;
   --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 24px);
   --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 18px);
   --font-xs-resp: clamp(10px, calc(0.5rem + 0.25vw), 16px);
+  --font-lg: 66px;
   --spacing-lg: 4rem;
   --spacing-md: 2rem;
   --spacing-sm: 1rem;
@@ -95,7 +97,7 @@
   --primary-weight: 400;
   --thin-weight: 100;
   --primary-line-height: 1.25;
-  --body-max-width: clamp(590px, 50%, 1480px);
+  --body-max-width: clamp(590px, 60%, 1480px);
   --lofty-line-height: 1.35;
   --primary-margin: clamp(10px, 3vw, 30px);
   --medium-margin: 3vw 6vw;
@@ -170,7 +172,7 @@ a:hover {
 
 h2 {
   font-weight: var(--thin-weight);
-  font-size: var(--font-md-resp);
+  font-size: var(--font-md);
   margin-bottom: var(--spacing-md);
 }
 
@@ -253,12 +255,14 @@ p {
 }
 
 .body-text p {
-  font-size: var(--font-smish-resp);
+  font-size: 20px;
   margin-bottom: 20px;
+  line-height: 1.05;
 }
 
 .image-module-figure,
 .full-bleed-image-container {
+  grid-column: span 12;
   width: 100%;
   height: 100%;
 }
@@ -370,6 +374,10 @@ header div {
 .desktop-menu {
   display: flex;
   flex-direction: column;
+}
+
+.desktop-menu a {
+  line-height: 1;
 }
 
 .active-desktop-link {
@@ -764,6 +772,35 @@ Footer
   margin-bottom: var(--spacing-sm);
 }
 
+.about-email-form {
+  width: calc(var(--body-max-width) - 80px);
+  display: flex;
+  border: 1px solid grey;
+  background: transparent;
+  margin: 0 auto;
+  font-family: var(--font-secondary);
+}
+
+.about-email-form input[type='email'] {
+  background: transparent;
+  color: #000;
+  margin: 0;
+  padding: 10px 5px;
+  font-size: 16px;
+  line-height: 16px;
+  border: none;
+  width: 100%;
+  outline: 0 !important;
+}
+
+.about-email-form input[type='email']::placeholder {
+  color: #000;
+  opacity: 1;
+  font-size: var(--font-xs-resp);
+  text-align: center;
+}
+
+
 .email-pop-up-form {
   width: clamp(100px, 100%, 250px);
   display: flex;
@@ -803,6 +840,14 @@ Footer
   width: fit-content;
   white-space: nowrap;
   padding-right: 5px;
+}
+
+.about-email-submit {
+  font-size: var(--font-xs-resp);
+  width: fit-content;
+  white-space: nowrap;
+  padding: 10px 8%;
+  border-left: 1px solid #000;
 }
 
 .footer-form-outer {
@@ -1114,29 +1159,28 @@ Case Study
 }
 
 .image-module-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 3vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+  row-gap: 40px;
   height: 100%;
   width: 100%;
 }
 
 .image-module-1 {
-  width: 100%;
+  grid-column: span 12;
 }
 
 .image-module-2 {
-  width: 48%;
+  grid-column: span 6
 }
 
 .image-module-3 {
-  width: 31%;
+  grid-column: span 4;
 }
 
 .image-module-4 {
-  width: 23%;
+  grid-column: 3;
 }
 
 .image-caption {
@@ -3081,7 +3125,8 @@ JOURNAL
   top: 0;
   right: 0;
   padding: var(--primary-margin);
-  font-size: var(--font-smish-resp);
+  font-size: 14px;
+  line-height: 1;
   font-family: var(--font-secondary);
   display: flex;
   flex-direction: column;
@@ -3108,11 +3153,14 @@ JOURNAL
 .journal-sub-heading {
   font-family: var(--font-secondary);
   text-align: center;
-  padding-top: calc(100px + 3vw);
+  padding-top: 65px;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: 14px;
 }
 
 .journal-tile-container {
-  padding-top: 40px;
+  padding-top: 100px;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -3205,7 +3253,11 @@ JOURNAL
 .journal-heading h1,
 .journal-heading h2 {
   font-weight: 100;
-  font-size: var(--font-lg-resp);
+  font-size: var(--font-lg);
+}
+
+.journal-heading h2 {
+  margin-bottom: 20px;
 }
 
 .journal-subheading {
@@ -3216,6 +3268,7 @@ JOURNAL
   display: flex;
   justify-content: center;
   font-family: var(--font-secondary);
+  text-transform: uppercase;
 }
 
 .journal-tile-info {
@@ -3241,6 +3294,11 @@ JOURNAL
 .fullbleed-video {
   width: 100vw;
   margin-left: calc(var(--primary-margin) * -1);
+}
+
+.journal-credits {
+  width: clamp(200px, 35%, 500px);
+  margin: 6vw auto;
 }
 
 .journal-credits-table {
