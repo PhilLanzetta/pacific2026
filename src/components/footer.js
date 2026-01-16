@@ -12,29 +12,61 @@ const Footer = () => {
       <div className='footer-left'>
         <div className='footer-links'>
           <div className='footer-column'>
-            <Link to='/info' className='footer-link'>
+            <Link
+              to='/info'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
               Information
             </Link>
-            <Link to='/work' className='footer-link'>
+            <Link
+              to='/work'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
               Work
             </Link>
-            <Link to='/journal' className='footer-link'>
+            <Link
+              to='/journal'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
               Journal
             </Link>
-            <Link to='/books' className='footer-link'>
-              Publishing
+            <Link
+              to='/books'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
+              Books
             </Link>
           </div>
           <div className='footer-column'>
             <a href='mailto:studio@pacificpacific.pub' className='footer-link'>
               Contact
             </a>
+            <Link
+              to='/press'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
+              Press
+            </Link>
+            <Link
+              to='/press'
+              className='footer-link'
+              activeClassName='active-desktop-link'
+            >
+              News
+            </Link>
             <a
               href='mailto:business@pacificpacific.pub'
               className='footer-link'
             >
               Careers
             </a>
+          </div>
+          <div className='footer-column footer-start'>
             <a
               href='https://www.instagram.com/pacific_pacific'
               target='_blank'
@@ -54,7 +86,20 @@ const Footer = () => {
           </div>
         </div>
         <div className='mobile-divider'></div>
-        <div className='footer-column'>
+        <div className='footer-column footer-mobile'>
+          <div className='footer-link footer-p'>Mailing List</div>
+          <MailchimpSubscribe
+            url={postUrl}
+            render={({ subscribe, status, message }) => (
+              <CustomForm
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
+              ></CustomForm>
+            )}
+          />
+        </div>
+        <div className='footer-column footer-desktop'>
           <div className='footer-link footer-p'>Studio</div>
           <a
             href='https://maps.app.goo.gl/8vXst9aKP9nn7rJu5'
@@ -68,7 +113,18 @@ const Footer = () => {
           </a>
         </div>
         <div className='mobile-divider'></div>
-        <div className='footer-column'>
+        <div className='footer-studio footer-mobile'>
+          <div className='footer-link'>Studio:</div>
+          <a
+            href='https://maps.app.goo.gl/8vXst9aKP9nn7rJu5'
+            target='_blank'
+            rel='noreferrer'
+            className='studio-address'
+          >
+            161 Water St, New York, NY 10038
+          </a>
+        </div>
+        <div className='footer-column footer-desktop'>
           <div className='footer-link footer-p'>Mailing List</div>
           <MailchimpSubscribe
             url={postUrl}

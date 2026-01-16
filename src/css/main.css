@@ -85,6 +85,7 @@
   --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 24px);
   --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 18px);
   --font-xs-resp: clamp(10px, calc(0.5rem + 0.25vw), 16px);
+  --font-xs: 14px;
   --font-lg: 66px;
   --spacing-lg: 4rem;
   --spacing-md: 2rem;
@@ -727,9 +728,13 @@ Footer
   justify-content: space-between;
 }
 
+.footer-column.footer-start {
+  justify-content: flex-start;
+}
+
 .studio-address {
   font-family: var(--font-secondary);
-  font-size: var(--font-xs-resp);
+  font-size: var(--font-xs);
 }
 
 .footer-link-container {
@@ -878,13 +883,21 @@ Footer
   width: 100%;
 }
 
+.footer-desktop {
+  display: flex;
+}
+
+.footer-mobile {
+  display: none;
+}
+
 /*
 ==========
 Footer MEDIA
 ==========
 */
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1380px) {
   .footer {
     flex-direction: column;
     gap: var(--primary-margin);
@@ -900,9 +913,21 @@ Footer MEDIA
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   footer {
     border-top: 1px solid #000;
+  }
+
+  .footer {
+    gap: 0px;
+  }
+
+  .footer-mobile {
+    display: flex;
+  }
+
+  .footer-desktop {
+    display: none;
   }
 
   .footer-left {
@@ -912,35 +937,36 @@ Footer MEDIA
   }
 
   .footer-links {
-    justify-content: space-around;
+    justify-content: space-between;
     padding-top: 10px;
   }
 
-  .footer-column {
+  .footer-studio {
+    display: flex;
+    gap: 5px;
     align-items: center;
-    gap: 15px;
   }
 
-  .footer-right {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--primary-margin);
+  .footer-column {
+    align-items: flex-start;
+    gap: 0;
   }
 
   .mobile-divider {
     background: #848484;
     height: 1px;
-    width: 100%;
+    width: calc(100% + (var(--primary-margin) * 2));
     margin: var(--primary-margin) 0;
+    margin-left: calc(var(--primary-margin) * -1);
     display: block;
   }
 
-  .studio-address {
-    text-align: center;
+  .footer-right {
+    justify-content: space-between;
   }
 
   .footer-p {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   .email-pop-up-form {
