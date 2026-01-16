@@ -81,7 +81,7 @@
   --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
   --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
   --font-md-resp: clamp(20px, calc(1rem + 1vw), 80px);
-  --font-md: 50px;
+  --font-md: 40px;
   --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 24px);
   --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 18px);
   --font-xs-resp: clamp(10px, calc(0.5rem + 0.25vw), 16px);
@@ -113,7 +113,14 @@ html {
   width: 100vw;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1920px) {
+  :root {
+    --font-md: 32px;
+    --font-lg: 60px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   html {
     font-size: 16px;
   }
@@ -121,6 +128,9 @@ html {
   :root {
     --body-max-width: calc(100% - 40px);
     --primary-margin: 20px;
+    --font-md: 24px;
+    --font-lg: 36px;
+    --font-xs: 12px;
   }
 }
 
@@ -287,7 +297,7 @@ p {
   min-width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   a:hover {
     opacity: 1;
   }
@@ -310,6 +320,12 @@ p {
 
   .about-page-padding-top {
     padding-top: 80px;
+  }
+
+  .body-text p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 1.05;
   }
 }
 
@@ -346,11 +362,11 @@ header div {
 }
 
 .journal-header-logo img {
-  width: clamp(140px, 18vw, 380px);
+  width: clamp(160px, 18vw, 380px);
 }
 
 .header-logo img {
-  width: clamp(70px, 8.75vw, 280px);
+  width: clamp(80px, 8.75vw, 280px);
 }
 
 .header-show {
@@ -607,10 +623,11 @@ header div {
 
   .mobile-inner-links {
     padding: var(--primary-margin);
-    padding-top: 80px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     gap: var(--primary-margin);
+    font-size: 24px;
   }
 
   .mobile-inner-links button {
@@ -631,29 +648,37 @@ header div {
 
   .mobile-logo {
     opacity: 1;
-    width: 70px;
+    width: 80px;
   }
 
   .mobile-journal-logo {
     opacity: 1;
-    width: 140px;
+    width: 160px;
   }
 
   .mobile-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 50px);
   }
 
   .mobile-inner-lower {
     font-family: var(--font-secondary);
-    font-size: var(--font-xs-resp);
+    font-size: var(--font-xs);
     padding: var(--primary-margin);
     display: flex;
     flex-direction: column;
     gap: var(--primary-margin);
     width: 100vw;
+  }
+
+  .mobile-inner-middle {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xs);
+    padding: var(--primary-margin);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .mobile-inner-lower a {
@@ -799,7 +824,6 @@ Footer
   font-size: var(--font-xs-resp);
   text-align: center;
 }
-
 
 .email-pop-up-form {
   width: clamp(100px, 100%, 250px);
@@ -1172,7 +1196,7 @@ Case Study
 }
 
 .image-module-2 {
-  grid-column: span 6
+  grid-column: span 6;
 }
 
 .image-module-3 {
@@ -1277,6 +1301,10 @@ CASE STUDY MEDIA
     padding: var(--primary-margin);
   }
 
+  .image-module-container {
+    row-gap: 0px;
+  }
+
   .image-module-2,
   .image-module-3,
   .image-module-4 {
@@ -1306,6 +1334,10 @@ CASE STUDY MEDIA
 
   .case-study-left {
     padding: var(--primary-margin);
+  }
+
+  .carousel .image-caption {
+    padding-left: var(--primary-margin);
   }
 }
 
@@ -3394,6 +3426,10 @@ JOURNAL
   }
 
   .tile-excerpt-text-full {
+    width: 100%;
+  }
+
+  .journal-credits {
     width: 100%;
   }
 }

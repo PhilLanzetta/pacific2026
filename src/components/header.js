@@ -1,12 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, navigate } from 'gatsby'
 import Logo from '../images/logo.svg'
 import journalLogo from '../images/journal_logo.svg'
 import booksLogo from '../images/books_logo.svg'
 import HideOnScroll from './hideOnScroll'
+import useWindowSize from '../utils/useWindowSize'
 
 const Header = ({ journal, books }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { height } = useWindowSize()
+  const [menuHeight, setMenuHeight] = useState('calc(100vh - 50px)')
+
+  useEffect(() => {
+    setMenuHeight(`${height - 50}px`)
+  }, [])
+
   return (
     <>
       <header>
@@ -21,7 +29,7 @@ const Header = ({ journal, books }) => {
             Journal
           </Link>
           <Link to='/books' activeClassName='active-desktop-link'>
-            Publishing
+            Books
           </Link>
         </div>
         <div className='mobile-placeholder'></div>
@@ -85,6 +93,7 @@ const Header = ({ journal, books }) => {
             </button>
           )}
           <div
+            style={{ height: menuHeight }}
             className={`mobile-inner-container ${
               isOpen ? 'mobile-inner-open' : 'mobile-inner-closed'
             }`}
@@ -128,7 +137,29 @@ const Header = ({ journal, books }) => {
                   }, 500)
                 }}
               >
-                Publishing
+                Books
+              </button>
+            </div>
+            <div className='mobile-inner-middle'>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/press')
+                  }, 500)
+                }}
+              >
+                PRESS
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/news')
+                  }, 500)
+                }}
+              >
+                NEWS
               </button>
             </div>
             <div className='mobile-inner-lower'>

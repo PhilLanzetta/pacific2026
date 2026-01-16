@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../../components/layout'
-import NewsItem from '../../components/newsItem'
-import Seo from '../../components/seo'
+import Layout from '../components/layout'
+import NewsItem from '../components/newsItem'
+import Seo from '../components/seo'
 
 const News = ({ data }) => {
   const newsItems = data.allContentfulNewsItem.nodes

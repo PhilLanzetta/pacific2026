@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../../components/layout'
+import Layout from '../components/layout'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { BsArrowUpRight } from 'react-icons/bs'
-import Seo from '../../components/seo'
+import Seo from '../components/seo'
 import { PiListBold } from 'react-icons/pi'
 import { RiLayoutGridFill } from 'react-icons/ri'
 
