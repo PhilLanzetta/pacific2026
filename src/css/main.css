@@ -129,7 +129,7 @@ html {
   :root {
     --body-max-width: calc(100% - 40px);
     --primary-margin: 20px;
-    --font-md: 24px;
+    --font-md: 20px;
     --font-lg: 36px;
     --font-xs: 12px;
   }
@@ -323,11 +323,18 @@ p {
     padding-top: 80px;
   }
 
-  .body-text p {
+  .body-text.sans-serif p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    line-height: 1.05;
+  }
+
+  .body-text.serif p {
     font-size: 15px;
     margin-bottom: 15px;
     line-height: 1.05;
   }
+
 }
 
 /*
@@ -606,10 +613,21 @@ header div {
     border-right: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 1px -4px 4px -3px rgba(0, 0, 0, 0.15);
     margin-left: -1px;
+    position: relative;
   }
 
   .mobile-menu-btn:hover {
     opacity: 1;
+  }
+
+  .mobile-menu-btn::after {
+    display: block;
+    content: '';
+    height: 80px;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 
   .mobile-inner {
@@ -970,6 +988,12 @@ Footer MEDIA
   }
 
   .email-pop-up-form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .about-email-form {
     width: 100%;
   }
 }
@@ -3228,7 +3252,8 @@ JOURNAL
 .tile-category-container {
   margin-top: 5px;
   font-family: var(--font-secondary);
-  font-size: var(--font-xs-resp);
+  font-size: var(--font-xs);
+  text-transform: uppercase;
 }
 
 .tile-one-third {
@@ -3327,6 +3352,7 @@ JOURNAL
   justify-content: center;
   font-family: var(--font-secondary);
   text-transform: uppercase;
+  font-size: var(--font-xs);
 }
 
 .journal-tile-info {
@@ -3384,7 +3410,7 @@ JOURNAL
 
 .journal-tile-title {
   margin-top: 5px;
-  font-size: var(--font-md-resp);
+  font-size: var(--font-md);
 }
 
 .journal-tile-category {
@@ -3394,7 +3420,7 @@ JOURNAL
 }
 
 .journal-tile-subtitle {
-  font-size: var(--font-md-resp);
+  font-size: var(--font-md);
   font-style: italic;
 }
 
@@ -3409,6 +3435,9 @@ JOURNAL
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
     gap: 20px;
+    font-size: 12px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .filter-btn-header {
@@ -3418,8 +3447,13 @@ JOURNAL
   .filter-btn {
     border: 1px solid #000;
     border-radius: 4px;
-    padding: 10px;
-    width: calc(50% - 10px);
+    padding: 5px 10px;
+    width: fit-content;
+  }
+
+  .journal-tile-title,
+  .tile-category-container {
+    margin-top: 15px;
   }
 
   .tile-one-third:hover .tile-excerpt-text,
@@ -3428,6 +3462,7 @@ JOURNAL
   }
 
   .journal-tile-container {
+    padding-top: 50px;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -3457,6 +3492,10 @@ JOURNAL
 
   .journal-credits {
     width: 100%;
+  }
+
+  .journal-heading {
+    padding-bottom: 100px;
   }
 }
 
@@ -3489,5 +3528,10 @@ JOURNAL
 
   .related-journal {
     padding-top: var(--primary-margin);
+  }
+
+  .journal-sub-heading {
+    padding-top: 50px;
+    font-size: 12px;
   }
 }
