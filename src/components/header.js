@@ -15,6 +15,18 @@ const Header = ({ journal, books }) => {
     setMenuHeight(`${height - 50}px`)
   }, [])
 
+  let touchstartX = 0
+  let touchendX = 0
+
+  function handleGesture() {
+    const swipeThreshold = 50 // Minimum distance for a swipe
+
+    if (touchendX < touchstartX - swipeThreshold) {
+      // Swipe left detected
+      setIsOpen(false) // Programmatically trigger the click event
+    }
+  }
+
   return (
     <>
       <header>
@@ -43,7 +55,16 @@ const Header = ({ journal, books }) => {
         </HideOnScroll>
         <div></div>
       </header>
-      <div className={`mobile-menu ${isOpen ? 'mobile-menu-open' : ''}`}>
+      <div
+        onTouchStart={(e) => {
+          touchstartX = e.changedTouches[0].screenX
+        }}
+        onTouchEnd={(e) => {
+          touchendX = e.changedTouches[0].screenX
+          handleGesture()
+        }}
+        className={`mobile-menu ${isOpen ? 'mobile-menu-open' : ''}`}
+      >
         <div
           className={`mobile-inner ${isOpen ? 'mobile-open' : 'mobile-closed'}`}
         >
