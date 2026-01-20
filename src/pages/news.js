@@ -8,7 +8,9 @@ const News = ({ data }) => {
   const newsItems = data.allContentfulNewsItem.nodes
   return (
     <Layout>
-      <h1 className='news-page-title'>News</h1>
+      <div className='press-view-options'>
+        <h1 className='press-page-title'>News</h1>
+      </div>
       {newsItems.map((item) => (
         <NewsItem key={item.id} item={item}></NewsItem>
       ))}

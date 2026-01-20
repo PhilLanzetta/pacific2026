@@ -53,7 +53,7 @@ const Footer = () => {
               Press
             </Link>
             <Link
-              to='/press'
+              to='/news'
               className='footer-link'
               activeClassName='active-desktop-link'
             >
