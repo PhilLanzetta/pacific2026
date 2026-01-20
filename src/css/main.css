@@ -334,7 +334,6 @@ p {
     margin-bottom: 15px;
     line-height: 1.05;
   }
-
 }
 
 /*
@@ -353,14 +352,14 @@ header {
   color: #fff;
   background: transparent;
   font-family: var(--font-primary);
-  font-size: clamp(12px, var(--font-sm-resp), 24px);
+  font-size: 22px;
   align-items: flex-start;
   padding: var(--primary-margin);
   z-index: 200;
 }
 
 header div {
-  width: 33%;
+  width: 33.33%;
 }
 
 .header-logo,
@@ -398,6 +397,7 @@ header div {
 .desktop-menu {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .desktop-menu a {
@@ -1810,7 +1810,7 @@ Home
 }
 
 .featured-text-container p {
-  font-size: var(--font-smish-resp);
+  font-size: 14px;
   font-family: var(--font-secondary);
 }
 
@@ -2080,6 +2080,10 @@ Home MEDIA
 
   .journal-cta h2 {
     width: 100%;
+  }
+
+  .featured-text-container p {
+    font-size: 12px;
   }
 }
 
@@ -2665,7 +2669,8 @@ PRODUCT
   align-items: flex-start;
   width: 100%;
   background: #f7f7f7;
-  padding-top: calc(100px + 6vw);
+  padding: var(--primary-margin);
+  padding-top: 170px;
 }
 
 .product-title {
@@ -2677,24 +2682,52 @@ PRODUCT
 
 .product-left {
   width: 66%;
-  padding: 3vw;
+  padding-right: 60px;
 }
 
 .product-right {
-  width: 33%;
-  padding: 3vw;
-  padding-left: 0;
+  width: 34%;
 }
 
 .product-tagline-container,
 .product-price,
 .product-description,
 .product-details {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 30px;
+}
+
+.product-tagline-container p {
+  font-size: 30px;
+}
+
+.product-description p {
+  font-size: 20px;
+}
+
+.product-details {
+  border-top: 1px solid #000;
+}
+
+.product-details p {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  line-height: 2;
+  border-bottom: 1px solid #000;
+}
+
+.product-external-link {
+  border: 1px solid #000;
+}
+
+.product-external-link p {
+  font-family: var(--font-secondary);
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
 }
 
 .product-image {
-  margin-bottom: 3vw;
+  margin-bottom: 30px;
 }
 
 .books-page {
@@ -2702,11 +2735,12 @@ PRODUCT
 }
 
 .books-sub-heading {
+  font-family: var(--font-secondary);
   text-align: center;
-  padding-top: calc(80px + 3vw);
-  background: #f7f7f7;
-  font-style: italic;
-  font-size: var(--font-sm-resp);
+  padding-top: 100px;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: 14px;
 }
 
 .product-tiles-container {
@@ -2716,6 +2750,7 @@ PRODUCT
   gap: var(--spacing-sm);
   padding-top: 40px;
   background: #f7f7f7;
+  min-height: 100vh;
 }
 
 .product-tile {
@@ -2791,15 +2826,19 @@ PRODUCT
 .payment-info {
   text-transform: uppercase;
   font-family: var(--font-secondary);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.payment-info p {
-  font-size: var(--font-xs-resp);
+.payment-info p,
+.payment-info div {
+  font-size: var(--font-xs);
 }
 
 .product-tile-title {
-  margin-top: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 50px;
 }
 
 .product-size-container {
@@ -2830,16 +2869,14 @@ PRODUCT
 }
 
 .related-products-container {
-  padding: 3vw;
-  padding-top: 6vw;
+  padding: var(--primary-margin);
   background: #f7f7f7;
 }
 
 .related-title {
   display: inline-block;
-  font-size: var(--font-sm-resp);
+  font-size: 28px;
   font-weight: normal;
-  font-style: italic;
   padding-bottom: var(--spacing-sm);
 }
 
@@ -2853,26 +2890,68 @@ PRODUCT
   position: relative;
 }
 
+.related-product-title {
+  text-align: center;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: var(--font-secondary);
+}
+
+.related-product-title p {
+  font-size: 10px;
+}
+
+.product-detail-header {
+  margin-bottom: 10px;
+}
+
 /*
 ==========
 PRODUCTS MEDIA
 ==========
 */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .product-tile {
     width: calc(50% - (var(--spacing-sm) / 2));
   }
 
   .product-page-container {
     flex-wrap: wrap;
-    padding-top: 3vw;
+    padding-top: 90px;
+  }
+
+  .product-left {
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .product-media {
+    display: none;
+  }
+
+  .product-first-media {
+    width: calc(100% + (var(--primary-margin) * 2));
+    margin-left: calc(var(--primary-margin) * -1);
+    margin-bottom: 20px;
   }
 
   .product-right {
     width: 100%;
     position: static;
-    padding-left: 3vw;
+  }
+
+  .product-tagline-container p {
+    font-size: 36px;
+  }
+
+  .product-description p {
+    font-size: 15px;
+  }
+
+  .product-mobile-media-container {
+    margin-top: 30px;
   }
 
   .mobile-product-image {
@@ -2885,6 +2964,28 @@ PRODUCTS MEDIA
     flex-direction: column;
     padding: 3vw;
     gap: 3vw;
+  }
+
+  .product-details p,
+  .product-external-link p {
+    font-size: 12px;
+  }
+
+  .related-title {
+    font-size: 20px;
+  }
+  .payment-info {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .product-tile-title {
+    margin-bottom: 30px;
+  }
+
+  .books-sub-heading {
+    padding-top: 70px;
+    font-size: 12px;
   }
 }
 
@@ -3201,7 +3302,7 @@ JOURNAL
 ==========
 */
 
-.journal-filter {
+.journal-filter-container {
   position: absolute;
   z-index: 600;
   top: 0;
@@ -3210,17 +3311,27 @@ JOURNAL
   font-size: 14px;
   line-height: 1;
   font-family: var(--font-secondary);
+}
+
+.journal-filter {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
+.filter-btn-header {
+  width: 100%;
+  text-align: right;
+}
+
 .filter-btn-header,
 .filter-btn {
   text-transform: uppercase;
+  width: 100%;
+  text-align: right;
 }
 
-.active-filter {
+.filter-btn-header:hover {
   opacity: 1;
 }
 
@@ -3228,8 +3339,34 @@ JOURNAL
   opacity: 0.5;
 }
 
-.non-active-filter:hover {
+.active-filter {
   opacity: 1;
+}
+
+@media screen and (min-width: 800px) {
+  .non-active-filter:hover {
+    opacity: 1;
+  }
+
+  .journal-filter:hover .filter-btn {
+    opacity: 0.5;
+  }
+
+  .journal-filter:hover .filter-btn.active-filter {
+    opacity: 1;
+  }
+
+  .active-filter:hover {
+    opacity: 0.5;
+  }
+
+  .journal-filter:hover .filter-btn:hover {
+    opacity: 1;
+  }
+
+  .journal-filter:hover .filter-btn:not(:hover) .active-filter {
+    opacity: 1;
+  }
 }
 
 .journal-sub-heading {
@@ -3425,23 +3562,28 @@ JOURNAL
 }
 
 @media screen and (max-width: 700px) {
-  .journal-filter {
+  .journal-filter-container {
     position: static;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
     margin-top: 40px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-    gap: 20px;
     font-size: 12px;
     padding-left: 0px;
     padding-right: 0px;
   }
 
+  .journal-filter {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
   .filter-btn-header {
     width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
   }
 
   .filter-btn {

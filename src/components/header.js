@@ -19,7 +19,7 @@ const Header = ({ journal, books }) => {
   let touchendX = 0
 
   function handleGesture() {
-    const swipeThreshold = 50 // Minimum distance for a swipe
+    const swipeThreshold = 20 // Minimum distance for a swipe
 
     if (touchendX < touchstartX - swipeThreshold) {
       // Swipe left detected

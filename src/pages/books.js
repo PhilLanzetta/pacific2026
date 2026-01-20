@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-import JournalTile from '../components/journalTile'
+import ProductTile from '../components/productTile'
+import Seo from '../components/seo'
 
-const Journal = ({ location, data }) => {
+const Books = ({ data, location }) => {
+  const initialData = data.shopifyCollection.products
   const [activeFilters, setActiveFilters] = useState([])
-  const [tiles, setTiles] = useState(data.contentfulJournalLandingPage.tiles)
+  const [products, setProducts] = useState(initialData)
   const filters = [
-    'Branding',
-    'Films',
     'Art',
-    'Books',
+    'Photography',
+    'Design',
     'Writing',
-    'Sunday Reading',
-    'Technology',
+    'Clothing',
+    'Rare',
+    'Out of Print',
   ]
+
+  console.log(initialData.map((item) => item.tags))
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -33,13 +37,13 @@ const Journal = ({ location, data }) => {
     return [
       ...array,
       activeFilters
-        .map((term) => array.filter((item) => item.category.includes(term)))
+        .map((term) => array.filter((item) => item.tags.includes(term)))
         .reduce((a, b) => a.concat(b), []),
     ]
   }
 
   const handleFilter = () => {
-    let result = data.contentfulJournalLandingPage.tiles
+    let result = initialData
     if (activeFilters.length) {
       result = filterByType(result)
       result = result
@@ -47,7 +51,7 @@ const Journal = ({ location, data }) => {
         .reduce((a, b) => a.concat(b), [])
         .filter(onlyUnique)
     }
-    setTiles(result)
+    setProducts(result)
   }
 
   useEffect(() => {
@@ -56,11 +60,11 @@ const Journal = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <div className='journal-page-container'>
-        <div className='journal-sub-heading'>
-          Pacific’s journal is a digital and
+      <div className='books-page'>
+        <div className='books-sub-heading'>
+          Pacific publishes products that
           <br />
-          print platform where we share...
+          engage societies and shift culture
         </div>
         <div className='journal-filter-container'>
           <button
@@ -93,9 +97,9 @@ const Journal = ({ location, data }) => {
             ))}
           </div>
         </div>
-        <div className='journal-tile-container'>
-          {tiles.map((tile) => (
-            <JournalTile key={tile.id} tile={tile}></JournalTile>
+        <div className='product-tiles-container'>
+          {products.map((product) => (
+            <ProductTile key={product.id} product={product}></ProductTile>
           ))}
         </div>
       </div>
@@ -105,27 +109,35 @@ const Journal = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    contentfulJournalLandingPage {
-      tiles {
-        category
-        id
-        slug
-        subtitle
-        tileSize
-        tileVideoUrl
-        title
-        tileImage {
-          description
-          gatsbyImageData
-        }
-        tileExcerptText {
-          childMarkdownRemark {
-            html
+    shopifyCollection(handle: { eq: "everything" }) {
+      products {
+        featuredImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
+        handle
+        id
+        collections {
+          title
+        }
+        metafields {
+          key
+          value
+        }
+        title
+        tags
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+          }
+        }
+        totalInventory
       }
     }
   }
 `
 
-export default Journal
+export default Books

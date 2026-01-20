@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import ProductTile from './productTile'
+import Carousel from './carousel'
 
-const RelatedProducts = ({ productHandles }) => {
+const RelatedProducts = ({ productHandles, isMobile }) => {
   const data = useStaticQuery(graphql`
     {
       allShopifyProduct {
@@ -38,18 +39,27 @@ const RelatedProducts = ({ productHandles }) => {
 
   const productArray = productHandles
     .map((handle) =>
-      data.allShopifyProduct.nodes.filter((node) => node.handle === handle)
+      data.allShopifyProduct.nodes.filter((node) => node.handle === handle),
     )
     .flat()
 
   return (
     <div className='related-products-container'>
       <p className='related-title'>Related</p>
-      <div className='related-product-tiles'>
-        {productArray.map((product) => (
-          <ProductTile product={product} key={product.id}></ProductTile>
-        ))}
-      </div>
+      {!isMobile && (
+        <div className='related-product-tiles'>
+          {productArray.map((product) => (
+            <ProductTile product={product} key={product.id}></ProductTile>
+          ))}
+        </div>
+      )}
+      {isMobile && (
+        <Carousel
+          data={productArray}
+          slideCount={1}
+          relatedProducts={true}
+        ></Carousel>
+      )}
     </div>
   )
 }

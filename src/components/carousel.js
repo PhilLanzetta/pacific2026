@@ -3,8 +3,9 @@ import React, { useRef } from 'react'
 import Slider from 'react-slick'
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import useWindowSize from '../utils/useWindowSize'
+import ProductTile from './productTile'
 
-const Carousel = ({ data, slideCount }) => {
+const Carousel = ({ data, slideCount, relatedProducts }) => {
   const slideRef = useRef()
   const { width } = useWindowSize()
 
@@ -14,23 +15,35 @@ const Carousel = ({ data, slideCount }) => {
     useTransform: false,
     dots: false,
     arrows: false,
-    autoplay: true,
+    autoplay: relatedProducts ? false : true,
   }
 
   return (
     <>
-      <div className='large-padding carousel'>
+      <div
+        className={`large-padding carousel ${
+          relatedProducts ? 'related-carousel' : ''
+        }`}
+      >
         <Slider {...settings} ref={slideRef}>
-          {data.map((image) => (
-            <div key={image.id} className='carousel-link'>
-              <GatsbyImage
-                className='carousel-image'
-                image={image.image.gatsbyImageData}
-                alt={image.image.description}
-              ></GatsbyImage>
-              <p className='image-caption'>{image.caption}</p>
-            </div>
-          ))}
+          {relatedProducts
+            ? data.map((product) => (
+                <ProductTile
+                  key={product.id}
+                  product={product}
+                  relatedProduct={true}
+                ></ProductTile>
+              ))
+            : data.map((image) => (
+                <div key={image.id} className='carousel-link'>
+                  <GatsbyImage
+                    className='carousel-image'
+                    image={image.image.gatsbyImageData}
+                    alt={image.image.description}
+                  ></GatsbyImage>
+                  <p className='image-caption'>{image.caption}</p>
+                </div>
+              ))}
         </Slider>
         <div className='carousel-arrows-container'>
           <button

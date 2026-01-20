@@ -6,6 +6,7 @@ import useWindowSize from '../utils/useWindowSize'
 import useStore from '../context/StoreContext'
 import RelatedProducts from '../components/relatedProducts'
 import Seo from '../components/seo'
+import { Fade } from 'react-awesome-reveal'
 import Slider from 'react-slick'
 
 function NextArrow(props) {
@@ -67,7 +68,7 @@ function PrevArrow(props) {
 const ProductPage = ({ location, data }) => {
   const { width } = useWindowSize()
   const [variantIndex, setVariantIndex] = useState(0)
-  const isMobile = width < 601
+  const isMobile = width < 701
   const {
     media,
     title,
@@ -82,19 +83,28 @@ const ProductPage = ({ location, data }) => {
   const allCollections = data.allShopifyCollection.nodes
 
   const filteredCollections = collections.filter(
-    (collection) => collection.title !== 'Everything'
+    (collection) => collection.title !== 'Everything',
   )
 
   const mediaImages = media.slice(1)
+  const firstMedia = mediaImages[0]
+  const subsequentMedia = mediaImages.slice(1)
+  console.log(firstMedia)
+
+  console.log(media)
 
   const { addVariantToCart } = useStore()
 
   const tagline = metafields.filter(
-    (metafield) => metafield.key === 'tagline'
+    (metafield) => metafield.key === 'tagline',
+  )[0]?.value
+
+  const externalLink = metafields.filter(
+    (metafield) => metafield.key === 'external_link_new',
   )[0]?.value
 
   const details = metafields.filter(
-    (metafield) => metafield.key === 'details'
+    (metafield) => metafield.key === 'details',
   )[0]?.value
 
   const relatedProductsHandles = metafields
@@ -103,7 +113,7 @@ const ProductPage = ({ location, data }) => {
 
   const sizes = variants
     .map((variant) =>
-      variant.selectedOptions.filter((option) => option.name === 'Size')
+      variant.selectedOptions.filter((option) => option.name === 'Size'),
     )
     .flat()
 
@@ -121,15 +131,30 @@ const ProductPage = ({ location, data }) => {
     <Layout location={location}>
       <div className='product-page-container'>
         <div className='product-left'>
-          <Slider {...settings}>
+          {isMobile && (
+            <div className='product-first-media'>
+              <Fade triggerOnce>
+                <GatsbyImage
+                  image={
+                    firstMedia.image?.localFile?.childImageSharp
+                      ?.gatsbyImageData
+                  }
+                ></GatsbyImage>
+              </Fade>
+            </div>
+          )}
+          <div className='product-media'>
             {mediaImages.map((image) => (
-              <GatsbyImage
-                key={image.id}
-                image={image.image?.localFile?.childImageSharp?.gatsbyImageData}
-                className='product-image'
-              ></GatsbyImage>
+              <Fade triggerOnce key={image.id}>
+                <GatsbyImage
+                  image={
+                    image.image?.localFile?.childImageSharp?.gatsbyImageData
+                  }
+                  className='product-image'
+                ></GatsbyImage>
+              </Fade>
             ))}
-          </Slider>
+          </div>
         </div>
         <div className='product-right'>
           {tagline ? (
@@ -149,13 +174,70 @@ const ProductPage = ({ location, data }) => {
             className='product-description'
             dangerouslySetInnerHTML={{ __html: descriptionHtml }}
           ></div>
-          {details && (
+          {externalLink && isMobile && (
             <div
-              dangerouslySetInnerHTML={{ __html: details }}
-              className='product-details'
+              className='product-external-link'
+              dangerouslySetInnerHTML={{ __html: externalLink }}
             ></div>
           )}
-          {totalInventory > 0 && (
+          {totalInventory > 0 && isMobile && (
+            <>
+              {sizes?.length > 0 && (
+                <div className='product-size-container'>
+                  <p>Size</p>
+                  <p>-</p>
+                  <select
+                    className='product-size-select'
+                    onChange={(e) => setVariantIndex(e.target.value * 1)}
+                  >
+                    {sizes.map((size, index) => (
+                      <option key={index} value={index}>
+                        {size.value}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <button
+                onClick={() =>
+                  addVariantToCart(data.shopifyProduct, variantIndex, 1)
+                }
+                className='add-to-cart-btn'
+              >
+                Add to Cart
+              </button>
+            </>
+          )}
+          {isMobile && (
+            <div className='product-mobile-media-container'>
+              {subsequentMedia.map((image) => (
+                <Fade triggerOnce key={image.id}>
+                  <GatsbyImage
+                    image={
+                      image.image?.localFile?.childImageSharp?.gatsbyImageData
+                    }
+                    className='product-image'
+                  ></GatsbyImage>
+                </Fade>
+              ))}
+            </div>
+          )}
+          {details && (
+            <div>
+              {isMobile && <div className='product-detail-header'>Product Details</div>}
+              <div
+                dangerouslySetInnerHTML={{ __html: details }}
+                className='product-details'
+              ></div>
+            </div>
+          )}
+          {externalLink && !isMobile && (
+            <div
+              className='product-external-link'
+              dangerouslySetInnerHTML={{ __html: externalLink }}
+            ></div>
+          )}
+          {totalInventory > 0 && !isMobile && (
             <>
               {sizes?.length > 0 && (
                 <div className='product-size-container'>
@@ -188,6 +270,7 @@ const ProductPage = ({ location, data }) => {
       {relatedProductsHandles?.length > 0 && (
         <RelatedProducts
           productHandles={relatedProductsHandles}
+          isMobile={isMobile}
         ></RelatedProducts>
       )}
     </Layout>
