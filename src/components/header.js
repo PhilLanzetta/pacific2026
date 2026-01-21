@@ -97,7 +97,7 @@ const Header = ({ journal, books }) => {
               <img
                 src={booksLogo}
                 alt='Pacific'
-                className='mobile-journal-logo'
+                className='mobile-books-logo'
               ></img>
             </button>
           ) : (

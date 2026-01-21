@@ -6,11 +6,10 @@ import ColumnModule from '../components/columnModule'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import CustomForm from '../components/customForm'
 
-const Info = ({ data }) => {
+const Info = ({ data, location }) => {
   const postUrl = process.env.GATSBY_MAIL_KEY
   const { content } = data.contentfulAboutPageRework
   return (
-    <Layout>
       <div className='about-page-container'>
         <div className='about-page-padding-top'></div>
         {content.map((item) => {
@@ -38,7 +37,6 @@ const Info = ({ data }) => {
           />
         </div>
       </div>
-    </Layout>
   )
 }
 

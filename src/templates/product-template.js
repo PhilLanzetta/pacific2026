@@ -55,7 +55,7 @@ const ProductPage = ({ location, data }) => {
     .flat()
 
   return (
-    <Layout location={location}>
+    <>
       <div className='product-page-container'>
         <div className='shop-cart'>
           <button
@@ -63,12 +63,14 @@ const ProductPage = ({ location, data }) => {
             className='shop-bag-button'
           >
             <p>
-              Cart{'  '}
+              Cart{' '}
               {cart.length > 0 ? (
                 <span className='cart-number'>
+                  (
                   {cart
                     .map((item) => item.quantity)
                     .reduce((prev, next) => prev + next)}
+                  )
                 </span>
               ) : (
                 ''
@@ -238,7 +240,7 @@ const ProductPage = ({ location, data }) => {
           isMobile={isMobile}
         ></RelatedProducts>
       )}
-    </Layout>
+    </>
   )
 }
 

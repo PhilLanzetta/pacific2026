@@ -8,7 +8,6 @@ import { Fade } from 'react-awesome-reveal'
 const Index = ({ data, location }) => {
   const tiles = data.contentfulStudioHome.tiles
   return (
-    <Layout location={location}>
       <div className='home-page-container'>
         {tiles.map((tile) => (
           <HomeTile key={tile.id} project={tile}></HomeTile>
@@ -23,7 +22,6 @@ const Index = ({ data, location }) => {
           </div>
         </Fade>
       </div>
-    </Layout>
   )
 }
 

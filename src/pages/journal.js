@@ -55,7 +55,6 @@ const Journal = ({ location, data }) => {
   }, [activeFilters])
 
   return (
-    <Layout location={location}>
       <div className='journal-page-container'>
         <div className='journal-sub-heading'>
           Pacific’s journal is a digital and
@@ -63,19 +62,19 @@ const Journal = ({ location, data }) => {
           print platform where we share...
         </div>
         <div className='journal-filter-container'>
-          <button
-            className='filter-btn-header'
-            onClick={() => setActiveFilters([])}
-          >
-            {activeFilters.length > 0 ? (
-              <span>
-                <em>Clear Filter</em>
-              </span>
-            ) : (
-              <span>Filter:</span>
-            )}
-          </button>
           <div className='journal-filter'>
+            <button
+              className='filter-btn-header'
+              onClick={() => setActiveFilters([])}
+            >
+              {activeFilters.length > 0 ? (
+                <span>
+                  <em>Clear Filter</em>
+                </span>
+              ) : (
+                <span>Filter:</span>
+              )}
+            </button>
             {filters.map((item, index) => (
               <button
                 key={index}
@@ -99,7 +98,6 @@ const Journal = ({ location, data }) => {
           ))}
         </div>
       </div>
-    </Layout>
   )
 }
 
@@ -116,7 +114,7 @@ export const query = graphql`
         title
         tileImage {
           description
-          gatsbyImageData
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         tileExcerptText {
           childMarkdownRemark {

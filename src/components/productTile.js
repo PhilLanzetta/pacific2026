@@ -44,25 +44,17 @@ const ProductTile = ({ product, relatedProduct }) => {
                 Out
               </div>
             )}
+            {!relatedProduct && (
+              <div className='payment-info'>
+                {totalInventory > 0 && (
+                  <p>${priceRangeV2.minVariantPrice.amount}</p>
+                )}
+              </div>
+            )}
           </div>
-          {!relatedProduct && (
-            <div className='payment-info'>
-              {tags && <div>{formatter.format(tags)}</div>}
-              {totalInventory > 0 && (
-                <p>${priceRangeV2.minVariantPrice.amount}</p>
-              )}
-              {totalInventory < 1 && (
-                <p className='product-status'>
-                  {inquire && 'Inquire'}
-                  {forthcoming && 'Forthcoming'} {preSale && 'Pre-sale'}
-                  {!inquire &&
-                    !forthcoming &&
-                    !preSale &&
-                    !notStocked &&
-                    !hideOutOfPrint &&
-                    'Out of Print'}
-                </p>
-              )}
+          {!relatedProduct && tags && (
+            <div className='product-tile-category'>
+              {formatter.format(tags)}
             </div>
           )}
           {tagline && (

@@ -7,7 +7,7 @@ import Seo from '../components/seo'
 import { PiListBold } from 'react-icons/pi'
 import { RiLayoutGridFill } from 'react-icons/ri'
 
-const Press = ({ data }) => {
+const Press = ({ data, location }) => {
   const pressItems = data.allContentfulPressItem.nodes
   const [view, setView] = useState()
 
@@ -20,7 +20,7 @@ const Press = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <>
       <div className='press-view-options'>
         <h1 className='press-page-title'>Press</h1>
         <button
@@ -93,7 +93,7 @@ const Press = ({ data }) => {
           ))}
         </div>
       )}
-    </Layout>
+    </>
   )
 }
 

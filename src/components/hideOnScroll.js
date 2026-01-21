@@ -17,9 +17,13 @@ const HideOnScroll = ({ children, journal, books }) => {
 
   return (
     <div
-      className={`${journal || books ? 'journal-header-logo' : 'header-logo'} ${
-        visible ? 'header-show' : 'header-hide'
-      }`}
+      className={`${
+        journal
+          ? 'journal-header-logo'
+          : books
+          ? 'books-header-logo'
+          : 'header-logo'
+      } ${visible ? 'header-show' : 'header-hide'}`}
     >
       {children}
     </div>

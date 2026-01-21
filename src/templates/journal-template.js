@@ -18,7 +18,6 @@ const JournalTemplate = ({ data, location }) => {
   })
 
   return (
-    <Layout location={location}>
       <div className='journal-page-container'>
         <div className='journal-page-padding-top'></div>
         <div className='journal-heading'>
@@ -89,7 +88,6 @@ const JournalTemplate = ({ data, location }) => {
           </Fade>
         )}
       </div>
-    </Layout>
   )
 }
 

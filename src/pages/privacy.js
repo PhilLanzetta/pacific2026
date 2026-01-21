@@ -2,9 +2,8 @@ import React from 'react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 
-const Privacy = () => {
+const Privacy = ({location}) => {
   return (
-    <Layout>
       <div className='page-background'>
         <h1 className='privacy-page-title'>Privacy</h1>
         <div className='privacy-container'>
@@ -102,7 +101,6 @@ const Privacy = () => {
           </p>
         </div>
       </div>
-    </Layout>
   )
 }
 

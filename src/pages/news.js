@@ -4,17 +4,17 @@ import Layout from '../components/layout'
 import NewsItem from '../components/newsItem'
 import Seo from '../components/seo'
 
-const News = ({ data }) => {
+const News = ({ data, location }) => {
   const newsItems = data.allContentfulNewsItem.nodes
   return (
-    <Layout>
+    <>
       <div className='press-view-options'>
         <h1 className='news-page-title'>News</h1>
       </div>
       {newsItems.map((item) => (
         <NewsItem key={item.id} item={item}></NewsItem>
       ))}
-    </Layout>
+    </>
   )
 }
 

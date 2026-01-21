@@ -83,6 +83,7 @@
   --font-md-resp: clamp(20px, calc(1rem + 1vw), 80px);
   --font-md: 40px;
   --font-sm-resp: clamp(10px, calc(0.75rem + 0.75vw), 24px);
+  --font-sm: 24px;
   --font-smish-resp: clamp(10px, calc(0.75rem + 0.75vw), 18px);
   --font-xs-resp: clamp(10px, calc(0.5rem + 0.25vw), 16px);
   --font-xs: 14px;
@@ -128,9 +129,10 @@ html {
 
   :root {
     --body-max-width: calc(100% - 40px);
-    --primary-margin: 20px;
+    --primary-margin: 10px;
     --font-md: 20px;
     --font-lg: 36px;
+    --font-sm: 16px;
     --font-xs: 12px;
   }
 }
@@ -272,6 +274,12 @@ p {
   line-height: 1.05;
 }
 
+.body-text.sans-serif p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
 .image-module-figure,
 .full-bleed-image-container {
   grid-column: span 12;
@@ -327,7 +335,7 @@ p {
   .body-text.sans-serif p {
     font-size: 12px;
     margin-bottom: 15px;
-    line-height: 1.05;
+    line-height: 1.25;
   }
 
   .body-text.serif p {
@@ -364,17 +372,22 @@ header div {
 }
 
 .header-logo,
-.journal-header-logo {
+.journal-header-logo,
+.books-header-logo {
   display: flex;
   justify-content: center;
 }
 
 .journal-header-logo img {
-  width: clamp(160px, 18vw, 380px);
+  width: 620px;
+}
+
+.books-header-logo img {
+  width: 582px;
 }
 
 .header-logo img {
-  width: clamp(80px, 8.75vw, 280px);
+  width: 280px;
 }
 
 .header-show {
@@ -453,17 +466,6 @@ header div {
 
 .shop-cart p {
   font-size: var(--font-xs);
-}
-
-.cart-number {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -60%);
-  padding: 3px 6px;
-  border: 1px solid #000;
-  border-radius: 100px;
-  font-size: 10px;
 }
 
 .cart-icon {
@@ -619,164 +621,6 @@ header div {
 .mobile-menu,
 .mobile-placeholder {
   display: none;
-}
-
-@media screen and (max-width: 700px) {
-  .desktop-menu {
-    display: none;
-  }
-
-  .product-row-image {
-    display: none;
-  }
-
-  .mobile-menu {
-    display: flex;
-    position: fixed;
-    align-items: flex-start;
-    top: 0;
-    left: 0;
-    z-index: 300;
-    height: 100vh;
-    font-size: clamp(18px, var(--font-sm-resp), 24px);
-    transform: translateX(calc((100vw + 1px) * -1));
-    transition: all 700ms ease;
-  }
-
-  .mobile-menu-open {
-    transform: translateX(0);
-    width: calc(100vw + 32px);
-    transition: all 700ms ease;
-  }
-
-  .mobile-menu-btn {
-    font-family: var(--font-secondary);
-    transform: rotate(90deg) translateY(-50%);
-    transform-origin: left;
-    background: #ffffff;
-    color: #000;
-    padding: 5px 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    border-left: 1px solid rgba(0, 0, 0, 0.15);
-    border-right: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 1px -4px 4px -3px rgba(0, 0, 0, 0.15);
-    margin-left: -1px;
-    position: relative;
-  }
-
-  .mobile-menu-btn:hover {
-    opacity: 1;
-  }
-
-  .mobile-menu-btn::after {
-    display: block;
-    content: '';
-    height: 80px;
-    width: 100px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .mobile-inner {
-    background: #ffffff;
-    color: #000;
-    overflow: hidden;
-    height: 100%;
-    border-right: 1px solid rgba(0, 0, 0, 0.15);
-    margin-left: -1px;
-    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.15);
-  }
-
-  .mobile-inner-links {
-    padding: var(--primary-margin);
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--primary-margin);
-    font-size: 24px;
-  }
-
-  .mobile-inner-links button {
-    text-align: left;
-  }
-
-  .mobile-placeholder {
-    display: block;
-  }
-
-  .mobile-logo-container {
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    mix-blend-mode: difference;
-    padding-top: var(--primary-margin);
-  }
-
-  .mobile-logo {
-    opacity: 1;
-    width: 80px;
-  }
-
-  .mobile-journal-logo {
-    opacity: 1;
-    width: 160px;
-  }
-
-  .mobile-inner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .mobile-inner-lower {
-    font-family: var(--font-secondary);
-    font-size: var(--font-xs);
-    padding: var(--primary-margin);
-    display: flex;
-    flex-direction: column;
-    gap: var(--primary-margin);
-    width: 100vw;
-  }
-
-  .mobile-inner-middle {
-    font-family: var(--font-secondary);
-    font-size: var(--font-xs);
-    padding: var(--primary-margin);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .mobile-inner-lower a {
-    display: block;
-  }
-
-  .checkout-btn {
-    width: 100%;
-  }
-
-  .product-row-container {
-    grid-template-columns: 1fr;
-  }
-
-  .product-row-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    justify-content: space-between;
-    padding: 5px;
-    grid-column: span 1;
-  }
-
-  .checkout-btn {
-    font-size: 12px;
-  }
-
-  .cart-container {
-    padding-top: 80px;
-  }
 }
 
 /*
@@ -1884,7 +1728,7 @@ Home
 }
 
 .featured-text-container p {
-  font-size: 14px;
+  font-size: 15px;
   font-family: var(--font-secondary);
 }
 
@@ -2521,6 +2365,11 @@ About
   background: #f7f7f7;
 }
 
+.about-page-container {
+  max-width: 3480px;
+  margin: 0 auto;
+}
+
 .about-page {
   padding-top: 100px;
   width: clamp(200px, 75%, 1200px);
@@ -2856,7 +2705,7 @@ PRODUCT
 }
 
 .product-tagline-container p {
-  font-size: 30px;
+  font-size: var(--font-lg);
 }
 
 .product-description p {
@@ -2869,7 +2718,7 @@ PRODUCT
 
 .product-details p {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--font-xs);
   line-height: 2;
   border-bottom: 1px solid #000;
 }
@@ -2891,29 +2740,32 @@ PRODUCT
 
 .books-page {
   background: #f7f7f7;
+  padding: var(--primary-margin);
+  max-width: 3480px;
+  margin: 0 auto;
 }
 
-.books-sub-heading {
+.books-sub-heading,
+.journal-sub-heading {
   font-family: var(--font-secondary);
   text-align: center;
-  padding-top: 100px;
+  padding-top: 120px;
   text-transform: uppercase;
   line-height: 1;
   font-size: 14px;
 }
 
 .product-tiles-container {
-  padding: var(--primary-margin);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  padding-top: 40px;
+  gap: var(--primary-margin);
+  padding-top: 80px;
   background: #f7f7f7;
   min-height: 100vh;
 }
 
 .product-tile {
-  width: calc(25% - var(--spacing-sm));
+  width: calc(25% - (var(--primary-margin) * 0.75));
 }
 
 .product-tile-hover {
@@ -2985,8 +2837,15 @@ PRODUCT
 .payment-info {
   text-transform: uppercase;
   font-family: var(--font-secondary);
-  display: flex;
-  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.product-tile-category {
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-size: var(--font-xs);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -3034,7 +2893,7 @@ PRODUCT
 
 .related-title {
   display: inline-block;
-  font-size: 28px;
+  font-size: var(--font-sm);
   font-weight: normal;
   padding-bottom: var(--spacing-sm);
 }
@@ -3070,83 +2929,6 @@ PRODUCT
 PRODUCTS MEDIA
 ==========
 */
-
-@media screen and (max-width: 700px) {
-  .product-tile {
-    width: calc(50% - (var(--spacing-sm) / 2));
-  }
-
-  .product-page-container {
-    flex-wrap: wrap;
-    padding-top: 90px;
-  }
-
-  .product-left {
-    width: 100%;
-    padding-right: 0px;
-  }
-
-  .product-media {
-    display: none;
-  }
-
-  .product-first-media {
-    width: calc(100% + (var(--primary-margin) * 2));
-    margin-left: calc(var(--primary-margin) * -1);
-    margin-bottom: 20px;
-  }
-
-  .product-right {
-    width: 100%;
-    position: static;
-  }
-
-  .product-tagline-container p {
-    font-size: 36px;
-  }
-
-  .product-description p {
-    font-size: 15px;
-  }
-
-  .product-mobile-media-container {
-    margin-top: 30px;
-  }
-
-  .mobile-product-image {
-    width: 100%;
-    padding: 0 3vw;
-  }
-
-  .mobile-product-secondary-images {
-    display: flex;
-    flex-direction: column;
-    padding: 3vw;
-    gap: 3vw;
-  }
-
-  .product-details p,
-  .product-external-link p {
-    font-size: 12px;
-  }
-
-  .related-title {
-    font-size: 20px;
-  }
-  .payment-info {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  .product-tile-title {
-    margin-bottom: 30px;
-  }
-
-  .books-sub-heading {
-    padding-top: 70px;
-    font-size: 12px;
-  }
-}
 
 .privacy-page-title {
   font-size: var(--font-md);
@@ -3504,6 +3286,7 @@ JOURNAL
   text-transform: uppercase;
   width: 100%;
   text-align: right;
+  line-height: 1.05;
 }
 
 .filter-btn-header:hover {
@@ -3544,17 +3327,8 @@ JOURNAL
   }
 }
 
-.journal-sub-heading {
-  font-family: var(--font-secondary);
-  text-align: center;
-  padding-top: 65px;
-  text-transform: uppercase;
-  line-height: 1;
-  font-size: 14px;
-}
-
 .journal-tile-container {
-  padding-top: 100px;
+  padding-top: 80px;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -3628,6 +3402,8 @@ JOURNAL
   background: #f7f7f7;
   padding: var(--primary-margin);
   min-height: 100vh;
+  max-width: 3480px;
+  margin: 0 auto;
 }
 
 .journal-content-container .outer-column-padding {
@@ -3635,7 +3411,7 @@ JOURNAL
 }
 
 .journal-page-padding-top {
-  padding-top: calc(100px + 6vw);
+  padding-top: 160px;
 }
 
 .journal-heading {
@@ -3740,8 +3516,6 @@ JOURNAL
   .journal-filter-container {
     position: static;
     margin-top: 40px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
     font-size: 12px;
     padding-left: 0px;
     padding-right: 0px;
@@ -3749,16 +3523,18 @@ JOURNAL
 
   .journal-filter {
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
+  }
+
+  .tile-excerpt-text {
+    display: none;
   }
 
   .filter-btn-header {
-    width: 100%;
-    text-align: center;
-    padding-bottom: 20px;
+    width: fit-content;
   }
 
   .filter-btn {
@@ -3770,7 +3546,7 @@ JOURNAL
 
   .journal-tile-title,
   .tile-category-container {
-    margin-top: 15px;
+    margin-top: 5px;
   }
 
   .tile-one-third:hover .tile-excerpt-text,
@@ -3812,7 +3588,11 @@ JOURNAL
   }
 
   .journal-heading {
-    padding-bottom: 100px;
+    padding-bottom: 40px;
+  }
+
+  .journal-page-padding-top {
+    padding-top: 120px;
   }
 }
 
@@ -3847,8 +3627,297 @@ JOURNAL
     padding-top: var(--primary-margin);
   }
 
+  .related-journal p {
+    font-size: var(--font-sm);
+  }
+}
+
+@media screen and (max-width: 2550px) {
+  .header-logo img {
+    width: 150px;
+  }
+
+  .journal-header-logo img {
+    width: 335px;
+  }
+
+  .books-header-logo img {
+    width: 310px;
+  }
+
+  .books-sub-heading,
+  .journal-sub-heading {
+    padding-top: 65px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  header {
+    padding-top: 20px;
+  }
+
+  .header-logo img {
+    width: 80px;
+  }
+
+  .journal-header-logo img {
+    width: 180px;
+  }
+
+  .books-header-logo img {
+    width: 166px;
+  }
+
+  .product-row-image {
+    width: 50%;
+  }
+
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    align-items: flex-start;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    height: 0;
+    font-size: clamp(18px, var(--font-sm-resp), 24px);
+    transform: translateX(calc((100vw + 1px) * -1));
+    transition: all 700ms ease;
+  }
+
+  .mobile-menu-open {
+    transform: translateX(0);
+    width: calc(100vw + 32px);
+    transition: all 700ms ease;
+  }
+
+  .mobile-menu-btn {
+    font-family: var(--font-secondary);
+    transform: rotate(90deg) translateY(-50%);
+    transform-origin: left;
+    background: #ffffff;
+    color: #000;
+    padding: 5px 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 1px -4px 4px -3px rgba(0, 0, 0, 0.15);
+    margin-left: -1px;
+    position: relative;
+  }
+
+  .mobile-menu-btn:hover {
+    opacity: 1;
+  }
+
+  .mobile-menu-btn::after {
+    display: block;
+    content: '';
+    height: 80px;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .mobile-inner {
+    background: #ffffff;
+    color: #000;
+    overflow: hidden;
+    height: 100vh;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    margin-left: -1px;
+    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-inner-links {
+    padding: var(--primary-margin);
+    padding-top: 80px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--primary-margin);
+    font-size: 24px;
+  }
+
+  .mobile-inner-links button {
+    text-align: left;
+  }
+
+  .mobile-placeholder {
+    display: block;
+  }
+
+  .mobile-logo-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    mix-blend-mode: difference;
+    padding-top: 20px;
+  }
+
+  .mobile-logo {
+    opacity: 1;
+    width: 80px;
+  }
+
+  .mobile-journal-logo {
+    opacity: 1;
+    width: 180px;
+  }
+
+  .mobile-books-logo {
+    opacity: 1;
+    width: 166px;
+  }
+
+  .mobile-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobile-inner-lower {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xs);
+    padding: var(--primary-margin);
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--primary-margin);
+    width: 100vw;
+  }
+
+  .mobile-inner-middle {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xs);
+    padding: var(--primary-margin);
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mobile-inner-lower a {
+    display: block;
+  }
+
+  .checkout-btn {
+    width: 100%;
+  }
+
+  .product-row-container {
+    display: flex;
+    gap: 20px;
+    border-top: none;
+  }
+
+  .product-row-info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: flex-start;
+  }
+
+  .product-row-quantity {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .checkout-btn {
+    font-size: 12px;
+  }
+
+  .cart-container {
+    padding-top: 80px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .product-tile {
+    width: calc(50% - (var(--primary-margin) / 2));
+  }
+
+  .product-page-container {
+    flex-wrap: wrap;
+    padding-top: 90px;
+  }
+
+  .product-left {
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .product-media {
+    display: none;
+  }
+
+  .product-first-media {
+    width: calc(100% + (var(--primary-margin) * 2));
+    margin-left: calc(var(--primary-margin) * -1);
+    margin-bottom: 20px;
+  }
+
+  .product-right {
+    width: 100%;
+    position: static;
+  }
+
+  .product-tagline-container p {
+    font-size: 36px;
+  }
+
+  .product-description p {
+    font-size: 15px;
+  }
+
+  .product-mobile-media-container {
+    margin-top: 30px;
+  }
+
+  .mobile-product-image {
+    width: 100%;
+    padding: 0 3vw;
+  }
+
+  .mobile-product-secondary-images {
+    display: flex;
+    flex-direction: column;
+    padding: 3vw;
+    gap: 3vw;
+  }
+
+  .product-details p,
+  .product-external-link p {
+    font-size: 12px;
+  }
+
+  .payment-info {
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .product-tile-title {
+    margin-bottom: 0px;
+  }
+
+  .books-sub-heading,
   .journal-sub-heading {
     padding-top: 50px;
     font-size: 12px;
+  }
+
+  .journal-tile-container,
+  .product-tiles-container {
+    padding-top: 40px;
+  }
+
+  .product-tile-category {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }

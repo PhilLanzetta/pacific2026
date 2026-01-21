@@ -2,9 +2,8 @@ import React from 'react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 
-const Shipping = () => {
+const Shipping = ({ location }) => {
   return (
-    <Layout>
       <div className='page-background'>
         <h1 className='privacy-page-title'>Shipping</h1>
         <div className='privacy-container'>
@@ -27,7 +26,6 @@ const Shipping = () => {
           </p>
         </div>
       </div>
-    </Layout>
   )
 }
 
