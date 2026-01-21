@@ -1,8 +1,12 @@
 import React from 'react'
 import { Fade } from 'react-awesome-reveal'
+import useWindowSize from '../utils/useWindowSize'
 
 const BodyText = ({ content }) => {
+  const { width } = useWindowSize()
+  const isMobile = width < 701
   const classes = ['body-text']
+
   if (content.padding) {
     if (content.padding === 'Large') {
       classes.push('large-margin-text')
@@ -13,12 +17,22 @@ const BodyText = ({ content }) => {
     }
   }
 
-  if (content.alignment) {
+  if (!content.mobileAlignment || (!isMobile && content.alignment)) {
     if (content.alignment === 'Left') {
       classes.push('left-aligned')
     } else if (content.alignment === 'Center') {
       classes.push('center-aligned')
     } else if (content.alignment === 'Right') {
+      classes.push('right-aligned')
+    }
+  }
+
+  if (isMobile && content.mobileAlignment) {
+    if (content.mobileAlignment === 'Left') {
+      classes.push('left-aligned')
+    } else if (content.mobileAlignment === 'Center') {
+      classes.push('center-aligned')
+    } else if (content.mobileAlignment === 'Right') {
       classes.push('right-aligned')
     }
   }

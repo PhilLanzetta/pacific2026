@@ -126,6 +126,7 @@ export const query = graphql`
               ... on ContentfulBodyText {
                 bodyTextId: id
                 alignment
+                mobileAlignment
                 fontFamily
                 padding
                 text {
