@@ -7,12 +7,12 @@ import Seo from '../components/seo'
 import RelatedCarousel from '../components/relatedCarousel'
 import { Fade } from 'react-awesome-reveal'
 
-const CaseStudy = ({ data }) => {
+const CaseStudy = ({ data, location }) => {
   const { headerImage, content, headerText, scope, related } =
     data.contentfulCaseStudy
 
   return (
-    <Layout>
+    <>
       <div className='case-study-page'>
         {headerImage && !headerText && (
           <div className='header-image'>
@@ -61,7 +61,7 @@ const CaseStudy = ({ data }) => {
           </div>
         </Fade>
       )}
-    </Layout>
+    </>
   )
 }
 
