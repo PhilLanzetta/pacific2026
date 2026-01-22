@@ -48,52 +48,29 @@ const Header = ({ journal, books }) => {
         <div className='mobile-placeholder'></div>
         <HideOnScroll journal={journal} books={books}>
           <div className='header-logo-container'>
-            <AnimatePresence mode='wait'>
-              {journal && (
-                <motion.div
-                  key='journal-container'
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Link to='/journal'>
-                    <img
-                      src={journalLogo}
-                      alt='Pacific Journal'
-                      className='journal-header-logo'
-                    ></img>
-                  </Link>
-                </motion.div>
-              )}
-              {books && (
-                <motion.div
-                  key='books-container'
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Link to='/books'>
-                    <img
-                      src={booksLogo}
-                      alt='Pacific Books'
-                      className='books-header-logo'
-                    ></img>
-                  </Link>
-                </motion.div>
-              )}
-              {!journal && !books && (
-                <motion.div
-                  key='regular-container'
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Link to={'/'}>
-                    <img src={Logo} alt='Pacific' className='header-logo'></img>
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {journal && (
+              <Link to='/journal'>
+                <img
+                  src={journalLogo}
+                  alt='Pacific Journal'
+                  className='journal-header-logo'
+                ></img>
+              </Link>
+            )}
+            {books && (
+              <Link to='/books'>
+                <img
+                  src={booksLogo}
+                  alt='Pacific Books'
+                  className='books-header-logo'
+                ></img>
+              </Link>
+            )}
+            {!journal && !books && (
+              <Link to={'/'}>
+                <img src={Logo} alt='Pacific' className='header-logo'></img>
+              </Link>
+            )}
           </div>
         </HideOnScroll>
         <div></div>
