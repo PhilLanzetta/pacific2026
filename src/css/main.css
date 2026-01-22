@@ -367,26 +367,24 @@ header {
   z-index: 200;
 }
 
-header div {
+header > div {
   width: 33.33%;
 }
 
-.header-logo,
-.journal-header-logo,
-.books-header-logo {
+.header-logo-container {
   display: flex;
   justify-content: center;
 }
 
-.journal-header-logo img {
+.journal-header-logo {
   width: 620px;
 }
 
-.books-header-logo img {
+.books-header-logo {
   width: 582px;
 }
 
-.header-logo img {
+.header-logo {
   width: 280px;
 }
 
@@ -3633,15 +3631,15 @@ JOURNAL
 }
 
 @media screen and (max-width: 2550px) {
-  .header-logo img {
+  .header-logo {
     width: 150px;
   }
 
-  .journal-header-logo img {
+  .journal-header-logo {
     width: 335px;
   }
 
-  .books-header-logo img {
+  .books-header-logo {
     width: 310px;
   }
 
@@ -3660,15 +3658,15 @@ JOURNAL
     padding-top: 20px;
   }
 
-  .header-logo img {
+  .header-logo {
     width: 80px;
   }
 
-  .journal-header-logo img {
+  .journal-header-logo {
     width: 180px;
   }
 
-  .books-header-logo img {
+  .books-header-logo {
     width: 166px;
   }
 
