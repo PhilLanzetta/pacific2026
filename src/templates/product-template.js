@@ -134,10 +134,12 @@ const ProductPage = ({ location, data }) => {
               ${priceRangeV2.minVariantPrice.amount}
             </p>
           )}
-          <div
-            className='product-description'
-            dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-          ></div>
+          {descriptionHtml && (
+            <div
+              className='product-description'
+              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+            ></div>
+          )}
           {externalLink && isMobile && (
             <div
               className='product-external-link'
