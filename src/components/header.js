@@ -5,9 +5,8 @@ import journalLogo from '../images/journal_logo.svg'
 import booksLogo from '../images/books_logo.svg'
 import HideOnScroll from './hideOnScroll'
 import useWindowSize from '../utils/useWindowSize'
-import { AnimatePresence, motion } from 'framer-motion'
 
-const Header = ({ journal, books }) => {
+const Header = ({ journal, books, journalHome, booksHome }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { height } = useWindowSize()
   const [menuHeight, setMenuHeight] = useState('calc(100vh - 50px)')
@@ -32,16 +31,16 @@ const Header = ({ journal, books }) => {
     <>
       <header>
         <div className='desktop-menu'>
-          <Link to='/info' activeClassName='active-desktop-link'>
+          <Link to='/info' activeClassName='active-desktop-link' partiallyActive>
             Information
           </Link>
           <Link to='/' activeClassName='active-desktop-link'>
             Work
           </Link>
-          <Link to='/journal' activeClassName='active-desktop-link'>
+          <Link to='/journal' activeClassName='active-desktop-link' partiallyActive>
             Journal
           </Link>
-          <Link to='/books' activeClassName='active-desktop-link'>
+          <Link to='/books' activeClassName='active-desktop-link' partiallyActive>
             Books
           </Link>
         </div>
@@ -72,6 +71,20 @@ const Header = ({ journal, books }) => {
               </Link>
             )}
           </div>
+          {journalHome && (
+            <div className='journal-sub-heading'>
+              Pacific’s journal is a digital and
+              <br />
+              print platform where we share...
+            </div>
+          )}
+          {booksHome && (
+            <div className='books-sub-heading'>
+              Pacific publishes products that
+              <br />
+              engage societies and shift culture
+            </div>
+          )}
         </HideOnScroll>
         <div></div>
       </header>

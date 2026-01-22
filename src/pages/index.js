@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Seo from '../components/seo'
-import Layout from '../components/layout'
 import HomeTile from '../components/homeTile'
 import { Fade } from 'react-awesome-reveal'
 

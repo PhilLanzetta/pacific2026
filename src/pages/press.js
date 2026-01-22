@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { BsArrowUpRight } from 'react-icons/bs'
 import Seo from '../components/seo'
@@ -12,8 +11,8 @@ const Press = ({ data, location }) => {
   const [view, setView] = useState()
 
   useEffect(() => {
-    if (localStorage.getItem('view')) {
-      setView(localStorage.getItem('view'))
+    if (sessionStorage.getItem('view')) {
+      setView(sessionStorage.getItem('view'))
     } else {
       setView('grid')
     }

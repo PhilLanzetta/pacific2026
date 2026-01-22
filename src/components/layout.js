@@ -6,6 +6,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 const Layout = ({ children, location }) => {
   const journal = location && location.pathname.includes('journal')
   const books = location && location.pathname.includes('books')
+  const journalHome = location && location.pathname === '/journal/'
+  const booksHome = location && location.pathname === '/books/'
+
+  console.log(location.pathname)
 
   const container = {
     out: { opacity: 0, transition: { duration: 0.5 } },
@@ -15,7 +19,7 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
-      <Header journal={journal} books={books}></Header>
+      <Header journal={journal} books={books} journalHome={journalHome} booksHome={booksHome}></Header>
       <AnimatePresence mode='wait'>
         <motion.main
           key={location.pathname}

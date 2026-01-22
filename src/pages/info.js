@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
 import BodyText from '../components/bodyText'
 import ColumnModule from '../components/columnModule'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'

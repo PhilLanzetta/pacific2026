@@ -376,6 +376,10 @@ header > div {
   justify-content: center;
 }
 
+.header-logo-container a:hover {
+  opacity: 1;
+}
+
 .journal-header-logo {
   width: 620px;
 }
@@ -2217,8 +2221,6 @@ PRESS
 
 .press-list-container {
   margin-top: var(--primary-margin);
-  margin-bottom: 6vw;
-  border-bottom: 1px solid #707070;
 }
 
 .press-page-title {
@@ -2676,7 +2678,7 @@ PRODUCT
   width: 100%;
   background: #f7f7f7;
   padding: var(--primary-margin);
-  padding-top: 170px;
+  padding-top: 260px;
 }
 
 .product-title {
@@ -2703,7 +2705,7 @@ PRODUCT
 }
 
 .product-tagline-container p {
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
 }
 
 .product-description p {
@@ -2739,6 +2741,7 @@ PRODUCT
 .books-page {
   background: #f7f7f7;
   padding: var(--primary-margin);
+  padding-top: 180px;
   max-width: 3480px;
   margin: 0 auto;
 }
@@ -2747,10 +2750,13 @@ PRODUCT
 .journal-sub-heading {
   font-family: var(--font-secondary);
   text-align: center;
-  padding-top: 120px;
   text-transform: uppercase;
   line-height: 1;
   font-size: 14px;
+  width: 80vw;
+  position: absolute;
+  left: 10vw;
+  top: 150px;
 }
 
 .product-tiles-container {
@@ -3399,6 +3405,7 @@ JOURNAL
 .journal-page-container {
   background: #f7f7f7;
   padding: var(--primary-margin);
+  padding-top: 180px;
   min-height: 100vh;
   max-width: 3480px;
   margin: 0 auto;
@@ -3643,9 +3650,18 @@ JOURNAL
     width: 310px;
   }
 
-  .books-sub-heading,
-  .journal-sub-heading {
-    padding-top: 65px;
+  .journal-page-container,
+  .books-page {
+    padding-top: 120px;
+  }
+
+  .journal-sub-heading,
+  .books-sub-heading {
+    top: 100px;
+  }
+
+  .product-page-container {
+    padding-top: 200px;
   }
 }
 
@@ -3833,6 +3849,16 @@ JOURNAL
   .cart-container {
     padding-top: 80px;
   }
+
+  .journal-page-container,
+  .books-page {
+    padding-top: 80px;
+  }
+
+  .journal-sub-heading,
+  .books-sub-heading {
+    top: 60px;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -3905,7 +3931,6 @@ JOURNAL
 
   .books-sub-heading,
   .journal-sub-heading {
-    padding-top: 50px;
     font-size: 12px;
   }
 

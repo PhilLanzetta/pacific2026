@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import ProductTile from '../components/productTile'
 import Seo from '../components/seo'
@@ -60,11 +59,6 @@ const Books = ({ data, location }) => {
 
   return (
       <div className='books-page'>
-        <div className='books-sub-heading'>
-          Pacific publishes products that
-          <br />
-          engage societies and shift culture
-        </div>
         <div className='journal-filter-container'>
           <div className='journal-filter'>
             <button

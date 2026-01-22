@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import JournalTile from '../components/journalTile'
 
@@ -56,11 +55,6 @@ const Journal = ({ location, data }) => {
 
   return (
       <div className='journal-page-container'>
-        <div className='journal-sub-heading'>
-          Pacific’s journal is a digital and
-          <br />
-          print platform where we share...
-        </div>
         <div className='journal-filter-container'>
           <div className='journal-filter'>
             <button
