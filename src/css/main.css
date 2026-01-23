@@ -2723,15 +2723,13 @@ PRODUCT
   border-bottom: 1px solid #000;
 }
 
-.product-external-link {
-  border: 1px solid #000;
-}
-
 .product-external-link p {
+  border: 1px solid #000;
   font-family: var(--font-secondary);
   text-align: center;
   font-size: 14px;
   padding: 10px;
+  margin-bottom: 30px;
 }
 
 .product-image {
