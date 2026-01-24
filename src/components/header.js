@@ -31,16 +31,28 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
     <>
       <header>
         <div className='desktop-menu'>
-          <Link to='/info' activeClassName='active-desktop-link' partiallyActive>
+          <Link
+            to='/info'
+            activeClassName='active-desktop-link'
+            partiallyActive
+          >
             Information
           </Link>
           <Link to='/' activeClassName='active-desktop-link'>
             Work
           </Link>
-          <Link to='/journal' activeClassName='active-desktop-link' partiallyActive>
+          <Link
+            to='/journal'
+            activeClassName='active-desktop-link'
+            partiallyActive
+          >
             Journal
           </Link>
-          <Link to='/books' activeClassName='active-desktop-link' partiallyActive>
+          <Link
+            to='/books'
+            activeClassName='active-desktop-link'
+            partiallyActive
+          >
             Books
           </Link>
         </div>
@@ -73,16 +85,12 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
           </div>
           {journalHome && (
             <div className='journal-sub-heading'>
-              Pacific’s journal is a digital and
-              <br />
-              print platform where we share...
+              Writing on work, process, and observation
             </div>
           )}
           {booksHome && (
             <div className='books-sub-heading'>
-              Pacific publishes products that
-              <br />
-              engage societies and shift culture
+              Design and publishing for art and culture
             </div>
           )}
         </HideOnScroll>
