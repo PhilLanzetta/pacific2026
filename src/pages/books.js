@@ -132,4 +132,6 @@ export const query = graphql`
   }
 `
 
+export const Head = () => <Seo title='Books' />
+
 export default Books

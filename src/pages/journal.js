@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import JournalTile from '../components/journalTile'
+import Seo from '../components/seo'
 
 const Journal = ({ location, data }) => {
   const [activeFilters, setActiveFilters] = useState([])
@@ -119,5 +120,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='Journal' />
 
 export default Journal

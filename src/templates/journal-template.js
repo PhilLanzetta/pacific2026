@@ -6,6 +6,7 @@ import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import { Fade } from 'react-awesome-reveal'
 import JournalTile from '../components/journalTile'
+import Seo from '../components/seo'
 
 const JournalTemplate = ({ data, location }) => {
   const { title, subtitle, category, content, projectCredits, related } =
@@ -188,5 +189,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = ({ data }) => <Seo title={data.contentfulJournalEntry.title} />
 
 export default JournalTemplate

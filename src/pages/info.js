@@ -4,6 +4,7 @@ import BodyText from '../components/bodyText'
 import ColumnModule from '../components/columnModule'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import CustomForm from '../components/customForm'
+import Seo from '../components/seo'
 
 const Info = ({ data, location }) => {
   const postUrl = process.env.GATSBY_MAIL_KEY
@@ -100,5 +101,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='Info' />
 
 export default Info
