@@ -102,6 +102,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title='Info' />
+export const Head = () => <Seo title='Information' />
 
 export default Info
