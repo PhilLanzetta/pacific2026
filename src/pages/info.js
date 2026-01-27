@@ -9,20 +9,24 @@ import Seo from '../components/seo'
 const Info = ({ data, location }) => {
   const postUrl = process.env.GATSBY_MAIL_KEY
   const { content } = data.contentfulAboutPageRework
+  const mainContent = content.slice(0, -1)
+  const newsletter = content.pop()
   return (
-      <div className='about-page-container'>
-        <div className='about-page-padding-top'></div>
-        {content.map((item) => {
-          if (item.bodyTextId) {
-            return <BodyText content={item} key={item.bodyTextId}></BodyText>
-          } else if (item.columnId) {
-            return (
-              <ColumnModule key={item.columnId} content={item}></ColumnModule>
-            )
-          } else {
-            return <div>Unknown Content</div>
-          }
-        })}
+    <div className='about-page-container'>
+      <div className='about-page-padding-top'></div>
+      {mainContent.map((item) => {
+        if (item.bodyTextId) {
+          return <BodyText content={item} key={item.bodyTextId}></BodyText>
+        } else if (item.columnId) {
+          return (
+            <ColumnModule key={item.columnId} content={item}></ColumnModule>
+          )
+        } else {
+          return <div>Unknown Content</div>
+        }
+      })}
+      <div className='info-newsletter-container'>
+        <BodyText content={newsletter}></BodyText>
         <div className='about-mail-form'>
           <MailchimpSubscribe
             url={postUrl}
@@ -37,6 +41,7 @@ const Info = ({ data, location }) => {
           />
         </div>
       </div>
+    </div>
   )
 }
 

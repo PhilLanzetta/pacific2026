@@ -134,6 +134,7 @@ html {
     --font-lg: 36px;
     --font-sm: 16px;
     --font-xs: 12px;
+    --spacing-md: 1rem;
   }
 }
 
@@ -342,6 +343,10 @@ p {
     font-size: 15px;
     margin-bottom: 15px;
     line-height: 1.05;
+  }
+
+  .info-newsletter-container {
+    padding: 80px 0;
   }
 }
 
