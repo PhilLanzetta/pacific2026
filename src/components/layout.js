@@ -4,12 +4,10 @@ import Footer from './footer'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const Layout = ({ children, location }) => {
-  const journal = location && location.pathname.includes('journal')
-  const books = location && location.pathname.includes('books')
+  const journal = location && location.pathname.split('/')[1] === 'journal'
+  const books = location && location.pathname.split('/')[1] === 'books'
   const journalHome = location && location.pathname === '/journal/'
   const booksHome = location && location.pathname === '/books/'
-
-  console.log(location.pathname)
 
   const container = {
     out: { opacity: 0, transition: { duration: 0.5 } },

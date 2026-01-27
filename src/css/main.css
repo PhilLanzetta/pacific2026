@@ -355,7 +355,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 66.6%;
   display: flex;
   mix-blend-mode: difference;
   color: #fff;
@@ -364,11 +364,12 @@ header {
   font-size: 22px;
   align-items: flex-start;
   padding: var(--primary-margin);
+  padding-right: calc(var(--primary-margin) / 3);
   z-index: 200;
 }
 
 header > div {
-  width: 33.33%;
+  width: 50%;
 }
 
 .header-logo-container {

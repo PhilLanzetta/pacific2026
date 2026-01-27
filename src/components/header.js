@@ -94,7 +94,6 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
             </div>
           )}
         </HideOnScroll>
-        <div></div>
       </header>
       <div
         onTouchStart={(e) => {
