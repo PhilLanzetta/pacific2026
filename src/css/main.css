@@ -3465,6 +3465,11 @@ JOURNAL
   display: flex;
   flex-direction: column;
   gap: 3vw;
+  margin-bottom: 6vw;
+}
+
+.extra-top-margin {
+  margin-top: 6vw;
 }
 
 .fullbleed-video {

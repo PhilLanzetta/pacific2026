@@ -18,76 +18,73 @@ const JournalTemplate = ({ data, location }) => {
   })
 
   return (
-      <div className='journal-page-container'>
-        <div className='journal-page-padding-top'></div>
-        <div className='journal-heading'>
-          <h1>{title}</h1>
-          <h2 className='journal-subheading'>{subtitle}</h2>
-          {category && (
-            <div className='category-container'>
-              {formatter.format(category)}
-            </div>
-          )}
-        </div>
-        {content && (
-          <div className='journal-content-container'>
-            {content.map((item) => {
-              if (item.bodyTextId) {
-                return (
-                  <BodyText content={item} key={item.bodyTextId}></BodyText>
-                )
-              } else if (item.columnId) {
-                return (
-                  <ColumnModule
-                    key={item.columnId}
-                    content={item}
-                  ></ColumnModule>
-                )
-              } else if (item.imageId) {
-                return (
-                  <ImageModule key={item.imageId} content={item}></ImageModule>
-                )
-              } else if (item.videoId) {
-                return (
-                  <VideoModule key={item.videoId} content={item}></VideoModule>
-                )
-              } else {
-                return <div>Unknown Content</div>
-              }
-            })}
-          </div>
-        )}
-        {projectCredits && (
-          <Fade triggerOnce>
-            <div className='journal-credits'>
-              <p>Project Credits</p>
-              <div className='journal-credits-table'>
-                {projectCredits.map((credit, index) => (
-                  <div key={index} className='journal-credit'>
-                    {credit}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Fade>
-        )}
-        {related && (
-          <Fade triggerOnce>
-            <div className='related-journal'>
-              <p>Related</p>
-              <div className='related-journal-tile-container'>
-                {related.map((item) => (
-                  <JournalTile
-                    tile={item}
-                    key={item.id}
-                    related={true}
-                  ></JournalTile>
-                ))}
-              </div>
-            </div>
-          </Fade>
+    <div className='journal-page-container'>
+      <div className='journal-page-padding-top'></div>
+      <div className='journal-heading'>
+        <h1>{title}</h1>
+        <h2 className='journal-subheading'>{subtitle}</h2>
+        {category && (
+          <div className='category-container'>{formatter.format(category)}</div>
         )}
       </div>
+      {content && (
+        <div
+          className={`journal-content-container ${
+            !content[0].bodyTextId ? 'extra-top-margin' : ''
+          }`}
+        >
+          {content.map((item) => {
+            if (item.bodyTextId) {
+              return <BodyText content={item} key={item.bodyTextId}></BodyText>
+            } else if (item.columnId) {
+              return (
+                <ColumnModule key={item.columnId} content={item}></ColumnModule>
+              )
+            } else if (item.imageId) {
+              return (
+                <ImageModule key={item.imageId} content={item}></ImageModule>
+              )
+            } else if (item.videoId) {
+              return (
+                <VideoModule key={item.videoId} content={item}></VideoModule>
+              )
+            } else {
+              return <div>Unknown Content</div>
+            }
+          })}
+        </div>
+      )}
+      {projectCredits && (
+        <Fade triggerOnce>
+          <div className='journal-credits'>
+            <p>Project Credits</p>
+            <div className='journal-credits-table'>
+              {projectCredits.map((credit, index) => (
+                <div key={index} className='journal-credit'>
+                  {credit}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Fade>
+      )}
+      {related && (
+        <Fade triggerOnce>
+          <div className='related-journal'>
+            <p>Related</p>
+            <div className='related-journal-tile-container'>
+              {related.map((item) => (
+                <JournalTile
+                  tile={item}
+                  key={item.id}
+                  related={true}
+                ></JournalTile>
+              ))}
+            </div>
+          </div>
+        </Fade>
+      )}
+    </div>
   )
 }
 
@@ -190,6 +187,8 @@ export const query = graphql`
   }
 `
 
-export const Head = ({ data }) => <Seo title={data.contentfulJournalEntry.title} />
+export const Head = ({ data }) => (
+  <Seo title={data.contentfulJournalEntry.title} />
+)
 
 export default JournalTemplate

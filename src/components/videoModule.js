@@ -81,8 +81,10 @@ const VideoModule = ({ content }) => {
 
   const progressHandler = (state) => {
     if (count > 5) {
-      controlRef.current.style.visibility = 'hidden'
-      fullScreenRef.current.style.visibility = 'hidden' // toggling player control container
+      if (controlRef.current && fullScreenRef.current) {
+        controlRef.current.style.visibility = 'hidden'
+        fullScreenRef.current.style.visibility = 'hidden' // toggling player control container
+      }
     } else {
       count += 1
     }
