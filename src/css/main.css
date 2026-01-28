@@ -205,7 +205,12 @@ p {
 }
 
 .large-padding {
-  padding: 0 12vw;
+  width: var(--body-max-width);
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .medium-margin {
@@ -1164,7 +1169,6 @@ Case Study
   gap: 10px;
   row-gap: 40px;
   height: 100%;
-  width: 100%;
 }
 
 .image-module-1 {

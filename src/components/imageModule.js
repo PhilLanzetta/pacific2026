@@ -11,7 +11,7 @@ const ImageModule = ({ content }) => {
       ) : (
         <div
           className={`image-module-container ${
-            content.fullBleed || content.imgColumns > 1 ? '' : 'large-padding'
+            content.fullBleed || content.imgColumns > 1 ? 'full-width' : 'large-padding'
           }`}
         >
           {content.images.map((image, index) => (
