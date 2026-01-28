@@ -84,7 +84,7 @@ export const query = graphql`
               }
               ... on ContentfulImageModule {
                 imageId: id
-                fullBleed
+                containerWidth
                 images {
                   caption
                   id

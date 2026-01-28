@@ -132,7 +132,7 @@ export const query = graphql`
               }
               ... on ContentfulImageModule {
                 imageId: id
-                fullBleed
+                containerWidth
                 images {
                   caption
                   id
@@ -153,13 +153,13 @@ export const query = graphql`
         ... on ContentfulImageModule {
           imageId: id
           imgColumns: columns
-          fullBleed
+          containerWidth
           isACarousel
           images {
             caption
             id
             image {
-              gatsbyImageData
+              gatsbyImageData(layout: FULL_WIDTH)
               description
             }
           }

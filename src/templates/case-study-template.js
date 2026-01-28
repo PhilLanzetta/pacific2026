@@ -127,7 +127,7 @@ export const query = graphql`
         ... on ContentfulImageModule {
           imageId: id
           columns
-          fullBleed
+          containerWidth
           isACarousel
           images {
             caption

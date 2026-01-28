@@ -5,7 +5,7 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import useWindowSize from '../utils/useWindowSize'
 import ProductTile from './productTile'
 
-const Carousel = ({ data, slideCount, relatedProducts }) => {
+const Carousel = ({ data, slideCount, relatedProducts, containerClass }) => {
   const slideRef = useRef()
   const { width } = useWindowSize()
 
@@ -21,9 +21,9 @@ const Carousel = ({ data, slideCount, relatedProducts }) => {
   return (
     <>
       <div
-        className={`large-padding carousel ${
+        className={`carousel ${
           relatedProducts ? 'related-carousel' : ''
-        }`}
+        } ${containerClass}`}
       >
         <Slider {...settings} ref={slideRef}>
           {relatedProducts

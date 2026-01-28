@@ -213,6 +213,16 @@ p {
   width: 100%;
 }
 
+.image-module-50 {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.image-module-75 {
+  width: 75%;
+  margin: 0 auto;
+}
+
 .medium-margin {
   margin: var(--medium-margin);
 }
@@ -352,6 +362,14 @@ p {
 
   .info-newsletter-container {
     padding: 80px 0;
+  }
+
+  .image-module-50 {
+    width: 100%;
+  }
+
+  .image-module-75 {
+    width: 100%;
   }
 }
 
