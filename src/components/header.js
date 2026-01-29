@@ -108,51 +108,17 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
         <div
           className={`mobile-inner ${isOpen ? 'mobile-open' : 'mobile-closed'}`}
         >
-          {journal ? (
-            <button
-              onClick={() => {
-                setIsOpen(false)
-                setTimeout(() => {
-                  navigate('/journal')
-                }, 500)
-              }}
-              className='mobile-logo-container'
-            >
-              <img
-                src={journalLogo}
-                alt='Pacific'
-                className='mobile-journal-logo'
-              ></img>
-            </button>
-          ) : books ? (
-            <button
-              onClick={() => {
-                setIsOpen(false)
-                setTimeout(() => {
-                  navigate('/books')
-                }, 500)
-              }}
-              className='mobile-logo-container'
-            >
-              <img
-                src={booksLogo}
-                alt='Pacific'
-                className='mobile-books-logo'
-              ></img>
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setIsOpen(false)
-                setTimeout(() => {
-                  navigate('/')
-                }, 500)
-              }}
-              className='mobile-logo-container'
-            >
-              <img src={Logo} alt='Pacific' className='mobile-logo'></img>
-            </button>
-          )}
+          <button
+            onClick={() => {
+              setIsOpen(false)
+              setTimeout(() => {
+                navigate('/')
+              }, 500)
+            }}
+            className='mobile-logo-container'
+          >
+            <img src={Logo} alt='Pacific' className='mobile-logo'></img>
+          </button>
           <div
             style={{ height: menuHeight }}
             className={`mobile-inner-container ${
