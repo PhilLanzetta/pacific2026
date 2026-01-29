@@ -31,15 +31,15 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
     <>
       <header>
         <div className='desktop-menu'>
+          <Link to='/' activeClassName='active-desktop-link'>
+            Work
+          </Link>
           <Link
-            to='/info'
+            to='/books'
             activeClassName='active-desktop-link'
             partiallyActive
           >
-            Information
-          </Link>
-          <Link to='/' activeClassName='active-desktop-link'>
-            Work
+            Books
           </Link>
           <Link
             to='/journal'
@@ -49,11 +49,11 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
             Journal
           </Link>
           <Link
-            to='/books'
+            to='/info'
             activeClassName='active-desktop-link'
             partiallyActive
           >
-            Books
+            Information
           </Link>
         </div>
         <div className='mobile-placeholder'></div>
@@ -130,21 +130,21 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
                 onClick={() => {
                   setIsOpen(false)
                   setTimeout(() => {
-                    navigate('/info')
-                  }, 500)
-                }}
-              >
-                Information
-              </button>
-              <button
-                onClick={() => {
-                  setIsOpen(false)
-                  setTimeout(() => {
                     navigate('/')
                   }, 500)
                 }}
               >
                 Work
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setTimeout(() => {
+                    navigate('/books')
+                  }, 500)
+                }}
+              >
+                Books
               </button>
               <button
                 onClick={() => {
@@ -160,11 +160,11 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
                 onClick={() => {
                   setIsOpen(false)
                   setTimeout(() => {
-                    navigate('/books')
+                    navigate('/info')
                   }, 500)
                 }}
               >
-                Books
+                Information
               </button>
             </div>
             <div className='mobile-inner-middle'>
