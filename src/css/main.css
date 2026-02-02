@@ -1872,11 +1872,11 @@ Home
 
 .carousel-arrows-container {
   position: absolute;
-  left: 0;
+  left: -60px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
-  width: 100%;
+  width: calc(100% + 120px);
   justify-content: space-between;
 }
 
@@ -3635,6 +3635,8 @@ JOURNAL
 @media screen and (max-width: 600px) {
   .carousel-arrows-container {
     padding: 0 10px;
+    left: 0;
+    width: 100%;
   }
   .pub-arrow svg path {
     fill: #fff;
