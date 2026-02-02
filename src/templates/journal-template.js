@@ -107,6 +107,12 @@ export const query = graphql`
             }
           }
         }
+        ... on ContentfulVideoModule {
+          videoId: id
+          videoLink
+          fullBleed
+          title
+        }
         ... on ContentfulImageModule {
           imageId: id
           imgColumns: columns
