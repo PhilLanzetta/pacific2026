@@ -164,12 +164,6 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulVideoModule {
-          videoId: id
-          videoLink
-          fullBleed
-          title
-        }
       }
       projectCredits
       related {
