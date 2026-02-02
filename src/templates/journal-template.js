@@ -107,49 +107,6 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulColumnContentContainer {
-          columnId: id
-          border
-          headingText {
-            childMarkdownRemark {
-              html
-            }
-          }
-          columns {
-            id
-            content {
-              ... on ContentfulBodyText {
-                bodyTextId: id
-                alignment
-                mobileAlignment
-                fontFamily
-                padding
-                text {
-                  childMarkdownRemark {
-                    html
-                  }
-                }
-              }
-              ... on ContentfulImageModule {
-                imageId: id
-                containerWidth
-                images {
-                  caption
-                  id
-                  image {
-                    description
-                    gatsbyImageData(layout: FULL_WIDTH)
-                  }
-                  isAGif
-                }
-                isACarousel
-              }
-            }
-          }
-          mobileWrap
-          wrapReverse
-          borderPadding
-        }
         ... on ContentfulImageModule {
           imageId: id
           imgColumns: columns
