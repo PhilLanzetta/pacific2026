@@ -6,7 +6,7 @@ import Seo from '../components/seo'
 const Journal = ({ location, data }) => {
   const [activeFilters, setActiveFilters] = useState([])
   const [tiles, setTiles] = useState(data.contentfulJournalLandingPage.tiles)
-  const filters = ['Case Studies', 'Perspectives', 'Sunday Reading']
+  const filters = ['Case Study', 'Perspectives', 'Sunday Reading']
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -46,6 +46,8 @@ const Journal = ({ location, data }) => {
     handleFilter()
   }, [activeFilters])
 
+  console.log(activeFilters)
+
   return (
     <div className='journal-page-container'>
       <div className='journal-filter-container'>
@@ -74,7 +76,7 @@ const Journal = ({ location, data }) => {
               }`}
               onClick={() => handleFilterClick(item)}
             >
-              {item}
+              {item === 'Case Study' ? 'Case Studies' : item}
             </button>
           ))}
         </div>
