@@ -13,7 +13,6 @@ const Books = ({ data, location }) => {
     'Design',
     'Writing',
     'Clothing',
-    'Rare',
     'Out of Print',
   ]
 
