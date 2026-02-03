@@ -6,15 +6,7 @@ import Seo from '../components/seo'
 const Journal = ({ location, data }) => {
   const [activeFilters, setActiveFilters] = useState([])
   const [tiles, setTiles] = useState(data.contentfulJournalLandingPage.tiles)
-  const filters = [
-    'Branding',
-    'Films',
-    'Art',
-    'Books',
-    'Writing',
-    'Sunday Reading',
-    'Technology',
-  ]
+  const filters = ['Case Studies', 'Perspectives', 'Sunday Reading']
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -55,44 +47,44 @@ const Journal = ({ location, data }) => {
   }, [activeFilters])
 
   return (
-      <div className='journal-page-container'>
-        <div className='journal-filter-container'>
-          <div className='journal-filter'>
+    <div className='journal-page-container'>
+      <div className='journal-filter-container'>
+        <div className='journal-filter'>
+          <button
+            className='filter-btn-header'
+            onClick={() => setActiveFilters([])}
+          >
+            {activeFilters.length > 0 ? (
+              <span>
+                <em>Clear Filter</em>
+              </span>
+            ) : (
+              <span>Filter:</span>
+            )}
+          </button>
+          {filters.map((item, index) => (
             <button
-              className='filter-btn-header'
-              onClick={() => setActiveFilters([])}
+              key={index}
+              className={`filter-btn ${
+                activeFilters.length > 0
+                  ? activeFilters.includes(item)
+                    ? 'active-filter'
+                    : 'non-active-filter'
+                  : ''
+              }`}
+              onClick={() => handleFilterClick(item)}
             >
-              {activeFilters.length > 0 ? (
-                <span>
-                  <em>Clear Filter</em>
-                </span>
-              ) : (
-                <span>Filter:</span>
-              )}
+              {item}
             </button>
-            {filters.map((item, index) => (
-              <button
-                key={index}
-                className={`filter-btn ${
-                  activeFilters.length > 0
-                    ? activeFilters.includes(item)
-                      ? 'active-filter'
-                      : 'non-active-filter'
-                    : ''
-                }`}
-                onClick={() => handleFilterClick(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className='journal-tile-container'>
-          {tiles.map((tile) => (
-            <JournalTile key={tile.id} tile={tile}></JournalTile>
           ))}
         </div>
       </div>
+      <div className='journal-tile-container'>
+        {tiles.map((tile) => (
+          <JournalTile key={tile.id} tile={tile}></JournalTile>
+        ))}
+      </div>
+    </div>
   )
 }
 
