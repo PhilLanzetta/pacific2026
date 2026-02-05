@@ -120,6 +120,7 @@ export const query = graphql`
           isACarousel
           images {
             caption
+            cropTo10801350
             id
             image {
               gatsbyImageData(layout: FULL_WIDTH)

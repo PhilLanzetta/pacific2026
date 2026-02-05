@@ -87,6 +87,7 @@ export const query = graphql`
                 containerWidth
                 images {
                   caption
+                  cropTo10801350
                   id
                   image {
                     description

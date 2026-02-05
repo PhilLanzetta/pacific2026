@@ -41,6 +41,7 @@ const ImageModule = ({ content }) => {
                 image={image.image?.gatsbyImageData}
                 alt={image.image?.description}
                 className='image-module-gatsby-image'
+                aspectRatio={image.cropTo10801350 ? 1080 / 1350 : ''}
               ></GatsbyImage>
               {image.caption && (
                 <figcaption className='image-caption'>
