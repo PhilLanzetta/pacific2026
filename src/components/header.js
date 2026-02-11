@@ -49,11 +49,11 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
             Journal
           </Link>
           <Link
-            to='/info'
+            to='/about'
             activeClassName='active-desktop-link'
             partiallyActive
           >
-            Information
+            About
           </Link>
         </div>
         <div className='mobile-placeholder'></div>
@@ -160,11 +160,11 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
                 onClick={() => {
                   setIsOpen(false)
                   setTimeout(() => {
-                    navigate('/info')
+                    navigate('/about')
                   }, 500)
                 }}
               >
-                Information
+                About
               </button>
             </div>
             <div className='mobile-inner-middle'>
