@@ -44,14 +44,11 @@ const Layout = ({ children, location }) => {
   const containerVariants = {
     hidden: {
       opacity: 0,
-      transition: {
-        when: 'afterChildren',
-      },
     },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.25, // Adds an initial delay before the first child starts
+        delayChildren: 0.5, // Adds an initial delay before the first child starts
         staggerChildren: 0.5, // Staggers each child's animation by 0.1s
       },
     },
@@ -70,8 +67,10 @@ const Layout = ({ children, location }) => {
             className='splash-container'
             key='splashcontainer'
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ when: 'afterChildren', duration: 0.7 }}
+            exit={{
+              opacity: 0,
+              transition: { when: 'afterChildren', duration: 1.5 },
+            }}
           >
             <motion.div
               className='splash-text-container'
