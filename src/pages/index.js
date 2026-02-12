@@ -7,20 +7,21 @@ import { Fade } from 'react-awesome-reveal'
 const Index = ({ data, location }) => {
   const tiles = data.contentfulStudioHome.tiles
   return (
-      <div className='home-page-container'>
-        {tiles.map((tile) => (
-          <HomeTile key={tile.id} project={tile}></HomeTile>
-        ))}
-        <Fade triggerOnce={true}>
-          <div className='journal-cta'>
-            <h2>
-              Read more about our work through writing and essays via Pacific
-              Journal
-            </h2>
-            <Link to='/journal' className='journal-cta-link'>READ</Link>
-          </div>
-        </Fade>
-      </div>
+    <div className='home-page-container'>
+      {tiles.map((tile) => (
+        <HomeTile key={tile.id} project={tile}></HomeTile>
+      ))}
+      <Fade triggerOnce={true}>
+        <div className='journal-cta'>
+          <h2>
+            Discover more of our work — including case studies, writing and interviews, and Sunday Reading — in the Pacific Journal
+          </h2>
+          <Link to='/journal' className='journal-cta-link'>
+            READ
+          </Link>
+        </div>
+      </Fade>
+    </div>
   )
 }
 

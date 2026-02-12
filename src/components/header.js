@@ -85,7 +85,7 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
           </div>
           {journalHome && (
             <div className='journal-sub-heading'>
-              Writing on work, process, and observation
+              Writing on work, process, and new ideas
             </div>
           )}
           {booksHome && (
