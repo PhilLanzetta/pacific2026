@@ -3982,7 +3982,6 @@ JOURNAL
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100vw;
   background: #f7f7f7;
   z-index: 500;

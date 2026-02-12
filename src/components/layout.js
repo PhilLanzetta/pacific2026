@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from './header'
 import Footer from './footer'
 import { AnimatePresence, motion } from 'framer-motion'
+import useWindowSize from '../utils/useWindowSize'
 
 const Layout = ({ children, location }) => {
+  const { height } = useWindowSize()
   const [splashShown, setSplashShown] = useState(() => {
     // Check if window (browser environment) is available
     if (typeof window !== 'undefined') {
@@ -16,7 +18,7 @@ const Layout = ({ children, location }) => {
     const timer = setTimeout(() => {
       setSplashShown(true)
       sessionStorage.setItem('splash', true)
-    }, 3000)
+    }, 4000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -66,6 +68,7 @@ const Layout = ({ children, location }) => {
           <motion.div
             className='splash-container'
             key='splashcontainer'
+            style={{ height: height }}
             initial={{ opacity: 1 }}
             exit={{
               opacity: 0,
@@ -89,10 +92,14 @@ const Layout = ({ children, location }) => {
               </motion.p>
               &nbsp;
               <motion.p key='item3' variants={itemVariants}>
-                that Shape
+                that
               </motion.p>
               &nbsp;
               <motion.p key='item4' variants={itemVariants}>
+                Shape
+              </motion.p>
+              &nbsp;
+              <motion.p key='item5' variants={itemVariants}>
                 <em>Culture</em>
               </motion.p>
             </motion.div>
