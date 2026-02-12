@@ -4,7 +4,7 @@ import Seo from '../components/seo'
 import HomeTile from '../components/homeTile'
 import { Fade } from 'react-awesome-reveal'
 
-const Index = ({ data, location }) => {
+const Index = ({ data }) => {
   const tiles = data.contentfulStudioHome.tiles
   return (
     <div className='home-page-container'>
@@ -14,7 +14,8 @@ const Index = ({ data, location }) => {
       <Fade triggerOnce={true}>
         <div className='journal-cta'>
           <h2>
-            Discover more of our work — including case studies, writing and interviews, and Sunday Reading — in the Pacific Journal
+            Discover more of our work — including case studies, writing and
+            interviews, and Sunday Reading — in the Pacific Journal
           </h2>
           <Link to='/journal' className='journal-cta-link'>
             READ
