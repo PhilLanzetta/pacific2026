@@ -70,5 +70,14 @@ module.exports = {
         component: require.resolve(`./src/components/layout`),
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-S4ZGWFWGS4'],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
   ],
 }
