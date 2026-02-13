@@ -18,7 +18,7 @@ const Layout = ({ children, location }) => {
     const timer = setTimeout(() => {
       setSplashShown(true)
       sessionStorage.setItem('splash', true)
-    }, 4000)
+    }, 3500)
 
     return () => clearTimeout(timer)
   }, [])

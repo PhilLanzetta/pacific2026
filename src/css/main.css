@@ -319,7 +319,6 @@ p {
 }
 
 .image-module-gatsby-image {
-  min-height: 100%;
   min-width: 100%;
 }
 
@@ -3997,5 +3996,6 @@ JOURNAL
 }
 
 .splash-text-container p {
-  font-size: var(--font-md);
+  font-size: calc(var(--font-md) + 1px);
+  font-style: italic;
 }
