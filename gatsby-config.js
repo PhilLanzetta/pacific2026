@@ -7,7 +7,7 @@ module.exports = {
     title: `Pacific`,
     description: `Pacific is a New York-based design studio and publisher with a focus on contemporary art and culture. We design books, catalogues, monographs, identities, websites, digital, advertising and print ephemera with galleries, institutions and art-focused organizations.`,
     author: `@pacific_pacific`,
-    siteUrl: `https://pacificpacific.pub`,
+    siteUrl: `https://pacific-pacific.com`,
     keywords: `design, art, culture, books, catalogues, monographs, identities, branding, websites, digital, advertising, print, galleries, institutions, organizations`,
   },
   plugins: [

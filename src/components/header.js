@@ -219,16 +219,16 @@ const Header = ({ journal, books, journalHome, booksHome }) => {
               </div>
               <div>
                 <a
-                  href='mailto:studio@pacificpacific.pub'
+                  href='mailto:studio@pacific-pacific.com'
                   className='footer-link'
                 >
-                  studio@pacificpacific.pub
+                  studio@pacific-pacific.com
                 </a>
                 <a
-                  href='mailto:business@pacificpacific.pub'
+                  href='mailto:business@pacific-pacific.com'
                   className='footer-link'
                 >
-                  business@pacificpacific.pub
+                  business@pacific-pacific.com
                 </a>
               </div>
             </div>

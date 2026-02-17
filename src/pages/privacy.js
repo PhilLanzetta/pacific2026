@@ -7,7 +7,7 @@ const Privacy = ({location}) => {
         <h1 className='privacy-page-title'>Privacy</h1>
         <div className='privacy-container'>
           <p>
-            This Privacy Policy describes how www.pacificpacific.pub collects,
+            This Privacy Policy describes how www.pacific-pacific.com collects,
             uses, and discloses your Personal Information when you visit or make
             a purchase from the site.
           </p>{' '}

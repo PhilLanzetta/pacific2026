@@ -42,7 +42,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className='footer-column'>
-            <a href='mailto:studio@pacificpacific.pub' className='footer-link'>
+            <a href='mailto:studio@pacific-pacific.com' className='footer-link'>
               Contact
             </a>
             <Link
@@ -60,7 +60,7 @@ const Footer = () => {
               News
             </Link>
             <a
-              href='mailto:business@pacificpacific.pub'
+              href='mailto:business@pacific-pacific.com'
               className='footer-link'
             >
               Careers

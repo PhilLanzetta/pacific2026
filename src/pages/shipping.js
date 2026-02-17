@@ -19,8 +19,8 @@ const Shipping = ({ location }) => {
           <p>
             Please contact our customer service team if you have further
             questions.<br></br>{' '}
-            <a href='mailto:studio@pacificpacific.pub'>
-              studio@pacificpacific.pub
+            <a href='mailto:studio@pacific-pacific.com'>
+              studio@pacific-pacific.com
             </a>
           </p>
         </div>
