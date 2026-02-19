@@ -15,7 +15,7 @@ const About = ({ data, location }) => {
   const { content } = data.contentfulAboutPageRework
   const firstContent = content.slice(0, 6)
   const secondContent = content.slice(6, -1)
-  const newsletter = content.pop()
+  const newsletter = content.at(-1)
   const { lizBio, adamBio, lizHeadshot, adamHeadshot } =
     data.contentfulAboutPage
 
@@ -30,17 +30,19 @@ const About = ({ data, location }) => {
   return (
     <div className='about-page-container'>
       <div className='about-page-padding-top'></div>
-      {firstContent.map((item) => {
-        if (item.bodyTextId) {
-          return <BodyText content={item} key={item.bodyTextId}></BodyText>
-        } else if (item.columnId) {
-          return (
-            <ColumnModule key={item.columnId} content={item}></ColumnModule>
-          )
-        } else {
-          return <div>Unknown Content</div>
-        }
-      })}
+      <div>
+        {firstContent.map((item) => {
+          if (item.bodyTextId) {
+            return <BodyText content={item} key={item.bodyTextId}></BodyText>
+          } else if (item.columnId) {
+            return (
+              <ColumnModule key={item.columnId} content={item}></ColumnModule>
+            )
+          } else {
+            return <div>Unknown Content</div>
+          }
+        })}
+      </div>
       <div className='outer-column-padding border-bottom'>
         <h2>Leadership</h2>
         <div className='leadership-container sans-serif body-text'>
@@ -59,7 +61,7 @@ const About = ({ data, location }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  key="lizBio"
+                  key='lizBio'
                   dangerouslySetInnerHTML={{ __html: lizRest }}
                 ></motion.div>
               )}
@@ -85,7 +87,7 @@ const About = ({ data, location }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  key="adamBio"
+                  key='adamBio'
                   dangerouslySetInnerHTML={{ __html: adamRest }}
                 ></motion.div>
               )}
@@ -98,17 +100,19 @@ const About = ({ data, location }) => {
           </div>
         </div>
       </div>
-      {secondContent.map((item) => {
-        if (item.bodyTextId) {
-          return <BodyText content={item} key={item.bodyTextId}></BodyText>
-        } else if (item.columnId) {
-          return (
-            <ColumnModule key={item.columnId} content={item}></ColumnModule>
-          )
-        } else {
-          return <div>Unknown Content</div>
-        }
-      })}
+      <div>
+        {secondContent.map((item) => {
+          if (item.bodyTextId) {
+            return <BodyText content={item} key={item.bodyTextId}></BodyText>
+          } else if (item.columnId) {
+            return (
+              <ColumnModule key={item.columnId} content={item}></ColumnModule>
+            )
+          } else {
+            return <div>Unknown Content</div>
+          }
+        })}
+      </div>
       <div className='info-newsletter-container'>
         <BodyText content={newsletter}></BodyText>
         <div className='about-mail-form'>
