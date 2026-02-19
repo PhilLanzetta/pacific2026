@@ -3999,3 +3999,23 @@ JOURNAL
   font-size: calc(var(--font-md) + 1px);
   font-style: italic;
 }
+
+.leadership-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--primary-margin);
+}
+
+.leadership-container p {
+  font-family: var(--font-secondary);
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  .leadership-container {
+    grid-template-columns: 1fr;
+  }
+}
