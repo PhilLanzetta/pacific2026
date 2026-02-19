@@ -20,11 +20,11 @@ const About = ({ data, location }) => {
 
   const adamBioArray = adamBio.childMarkdownRemark.html.split('</p>')
   const adamFirst = adamBioArray[0]
-  const adamRest = adamBioArray.slice(1).join()
+  const adamRest = adamBioArray.slice(1).join('')
 
   const lizBioArray = lizBio.childMarkdownRemark.html.split('</p>')
   const lizFirst = lizBioArray[0]
-  const lizRest = lizBioArray.slice(1).join()
+  const lizRest = lizBioArray.slice(1).join('')
 
   return (
     <div className='about-page-container'>
