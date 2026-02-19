@@ -18,6 +18,9 @@ const About = ({ data, location }) => {
   const { lizBio, adamBio, lizHeadshot, adamHeadshot } =
     data.contentfulAboutPage
 
+  const firstContent = content.slice(0, 6)
+  const secondContent = content.slice(6, -1)
+
   const adamBioArray = adamBio.childMarkdownRemark.html.split('</p>')
   const adamFirst = adamBioArray[0]
   const adamRest = adamBioArray.slice(1).join('')
@@ -29,7 +32,7 @@ const About = ({ data, location }) => {
   return (
     <div className='about-page-container'>
       <div className='about-page-padding-top'></div>
-      {mainContent.slice(0, 6).map((item) => {
+      {firstContent.map((item) => {
         if (item.bodyTextId) {
           return <BodyText content={item} key={item.bodyTextId}></BodyText>
         } else if (item.columnId) {
@@ -95,7 +98,7 @@ const About = ({ data, location }) => {
           </div>
         </div>
       </div>
-      {mainContent.slice(6).map((item) => {
+      {secondContent.map((item) => {
         if (item.bodyTextId) {
           return <BodyText content={item} key={item.bodyTextId}></BodyText>
         } else if (item.columnId) {
