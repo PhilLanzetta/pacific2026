@@ -59,6 +59,7 @@ const About = ({ data, location }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  key="lizBio"
                   dangerouslySetInnerHTML={{ __html: lizRest }}
                 ></motion.div>
               )}
@@ -84,6 +85,7 @@ const About = ({ data, location }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  key="adamBio"
                   dangerouslySetInnerHTML={{ __html: adamRest }}
                 ></motion.div>
               )}
