@@ -13,13 +13,11 @@ const About = ({ data, location }) => {
   const [adamExpand, setAdamExpand] = useState(false)
   const postUrl = process.env.GATSBY_MAIL_KEY
   const { content } = data.contentfulAboutPageRework
-  const mainContent = content.slice(0, -1)
+  const firstContent = content.slice(0, 6)
+  const secondContent = content.slice(6, -1)
   const newsletter = content.pop()
   const { lizBio, adamBio, lizHeadshot, adamHeadshot } =
     data.contentfulAboutPage
-
-  const firstContent = content.slice(0, 6)
-  const secondContent = content.slice(6, -1)
 
   const adamBioArray = adamBio.childMarkdownRemark.html.split('</p>')
   const adamFirst = adamBioArray[0]
