@@ -222,6 +222,7 @@ const VideoModule = ({ content }) => {
             <button
               className='video-play-pause-overlay'
               onClick={playPauseHandler}
+              aria-label='play or pause'
             ></button>
           )}
         </div>

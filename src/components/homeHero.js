@@ -19,7 +19,10 @@ const HomeHero = ({ videoId, poster, landscape, fontColor, sound, url }) => {
   }, [isOnScreen])
 
   return (
-    <div className={url ? 'journal-video-container' : 'hero-container'} ref={elementRef}>
+    <div
+      className={url ? 'journal-video-container' : 'hero-container'}
+      ref={elementRef}
+    >
       <GatsbyImage
         image={poster?.gatsbyImageData}
         alt={poster?.description}
@@ -60,6 +63,7 @@ const HomeHero = ({ videoId, poster, landscape, fontColor, sound, url }) => {
           onClick={() => setMuted(!muted)}
           style={{ color: fontColor }}
           className={muted ? 'home-muted-button' : 'home-sound-button'}
+          aria-label='mute or unmute'
         >
           {muted ? (
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10.906 14.541'>

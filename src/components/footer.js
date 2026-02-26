@@ -13,11 +13,11 @@ const Footer = () => {
         <div className='footer-links'>
           <div className='footer-column'>
             <Link
-              to='/info'
+              to='/about'
               className='footer-link'
               activeClassName='active-desktop-link'
             >
-              Information
+              About
             </Link>
             <Link
               to='/work'
