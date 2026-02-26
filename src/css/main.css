@@ -4,6 +4,7 @@
     url(../fonts/moderngothic-bold-webfont.woff) format('woff');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
     url(../fonts/moderngothic-bolditalic-webfont.woff) format('woff');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -20,6 +22,7 @@
     url(../fonts/moderngothic-regular-webfont.woff) format('woff');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +31,7 @@
     url(../fonts/moderngothic-regularitalic-webfont.woff) format('woff');
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -35,6 +39,7 @@
   src: url(../fonts/NeueHaasGrotText-Roman.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -42,6 +47,7 @@
   src: url(../fonts/NeueHaasGrotText-Medium.woff2) format('woff2');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -49,6 +55,7 @@
   src: url(../fonts/SilvanaText-Medium.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -56,6 +63,7 @@
   src: url(../fonts/SilvanaText-MediumItalic.woff2) format('woff2');
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -63,9 +71,8 @@
   src: url(../fonts/SilvanaText-Bold.woff2) format('woff2');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   margin: 0;
@@ -75,8 +82,8 @@
 
 :root {
   --font-primary: 'Times New Roman', serif;
-  --font-secondary: 'Roboto Mono', sans-serif;
-  --font-accent: 'Roboto', serif;
+  --font-secondary: 'Roboto Mono Variable', monospace;
+  --font-accent: 'Roboto Variable', serif;
   --font-xxlg-resp: clamp(36px, calc(1rem + 8.5vw), 300px);
   --font-xlg-resp: clamp(36px, calc(1rem + 5.5vw), 300px);
   --font-lg-resp: clamp(36px, calc(1rem + 2.5vw), 100px);
