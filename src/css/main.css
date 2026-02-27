@@ -1876,6 +1876,19 @@ Home
   position: relative;
 }
 
+.carousel-link {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-link .carousel-image {
+  width: 100%;
+  height: 100%;
+}
+
 .carousel-arrows-container {
   position: absolute;
   left: -60px;

@@ -35,12 +35,15 @@ const Carousel = ({ data, slideCount, relatedProducts, containerClass }) => {
                 ></ProductTile>
               ))
             : data.map((image) => (
-                <div key={image.id} className='carousel-link'>
-                  <GatsbyImage
-                    className='carousel-image'
-                    image={image.image.gatsbyImageData}
-                    alt={image.image.description}
-                  ></GatsbyImage>
+                <div key={image.id}>
+                  <div className='carousel-link'>
+                    <GatsbyImage
+                      className='carousel-image'
+                      image={image.image.gatsbyImageData}
+                      alt={image.image.description}
+                      objectFit='contain'
+                    ></GatsbyImage>
+                  </div>
                   <p className='image-caption'>{image.caption}</p>
                 </div>
               ))}
