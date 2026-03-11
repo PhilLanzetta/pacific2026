@@ -164,7 +164,7 @@ const VideoModule = ({ content }) => {
       <div
         className={`video-module-container ${
           content.fullBleed ? 'fullbleed-video' : 'large-padding'
-        }`}
+        } ${content.roundedCorners ? 'video-border-radius' : ''}`}
       >
         <div
           id={videoId}

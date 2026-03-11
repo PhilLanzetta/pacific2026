@@ -1339,10 +1339,6 @@ CASE STUDY MEDIA
   .case-study-left {
     padding: var(--primary-margin);
   }
-
-  .carousel .image-caption {
-    padding-left: var(--primary-margin);
-  }
 }
 
 /*
@@ -3657,9 +3653,6 @@ JOURNAL
     left: 0;
     width: 100%;
   }
-  .pub-arrow svg path {
-    fill: #fff;
-  }
 
   .carousel {
     width: 100vw;
@@ -4038,4 +4031,9 @@ JOURNAL
   .leadership-container {
     grid-template-columns: 1fr;
   }
+}
+
+.video-border-radius {
+  border-radius: 20px;
+  overflow: hidden;
 }

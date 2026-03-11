@@ -1,0 +1,20 @@
+.sliderContainer {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  margin-right: 20px;
+}
+
+.slideContainer {
+  display: flex;
+}
+
+.slideContainer figure {
+  height: 100%;
+}
+
+.imageBorder {
+  border-radius: 20px;
+}

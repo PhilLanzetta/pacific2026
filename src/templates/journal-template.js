@@ -112,12 +112,14 @@ export const query = graphql`
           videoLink
           fullBleed
           title
+          roundedCorners
         }
         ... on ContentfulImageModule {
           imageId: id
           imgColumns: columns
           containerWidth
           isACarousel
+          fixedHeightCarousel
           images {
             caption
             cropTo10801350
@@ -125,6 +127,8 @@ export const query = graphql`
             image {
               gatsbyImageData(layout: FULL_WIDTH)
               description
+              height
+              width
             }
           }
         }

@@ -2,6 +2,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { Fade } from 'react-awesome-reveal'
 import Carousel from './carousel'
+import FixedHeightCarousel from './fixedHeightCarousel'
 
 const ImageModule = ({ content }) => {
   let containerClass
@@ -21,11 +22,15 @@ const ImageModule = ({ content }) => {
   return (
     <Fade triggerOnce className='image-module-outer'>
       {content.isACarousel ? (
-        <Carousel
-          data={content.images}
-          slideCount={1}
-          containerClass={containerClass}
-        ></Carousel>
+        content.isACarousel && content.fixedHeightCarousel ? (
+          <FixedHeightCarousel images={content.images} containerClass={containerClass}></FixedHeightCarousel>
+        ) : (
+          <Carousel
+            data={content.images}
+            slideCount={1}
+            containerClass={containerClass}
+          ></Carousel>
+        )
       ) : (
         <div className={`image-module-container ${containerClass}`}>
           {content.images.map((image, index) => (
