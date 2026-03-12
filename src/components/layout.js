@@ -36,6 +36,7 @@ const Layout = ({ children, location }) => {
   const books = location && location.pathname.split('/')[1] === 'books'
   const journalHome = location && location.pathname === '/journal/'
   const booksHome = location && location.pathname === '/books/'
+  const home = location && location.pathname === '/'
 
   const container = {
     out: { opacity: 0, transition: { duration: 0.5 } },
@@ -64,7 +65,7 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <AnimatePresence mode='wait'>
-        {!splashShown && (
+        {!splashShown && home && (
           <motion.div
             className='splash-container'
             key='splashcontainer'
