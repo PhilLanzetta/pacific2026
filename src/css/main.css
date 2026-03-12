@@ -1895,6 +1895,16 @@ Home
   justify-content: space-between;
 }
 
+.carousel-arrows-container-fixed {
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: calc(100% + 70px);
+  justify-content: space-between;
+}
+
 .pub-arrow svg {
   height: 30px;
   width: 30px;

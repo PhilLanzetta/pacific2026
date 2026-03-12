@@ -15,7 +15,7 @@ const Carousel = ({ data, slideCount, relatedProducts, containerClass }) => {
     useTransform: false,
     dots: false,
     arrows: false,
-    autoplay: relatedProducts ? false : true,
+    autoplay: false,
   }
 
   return (

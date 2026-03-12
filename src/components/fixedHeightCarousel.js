@@ -14,7 +14,7 @@ const FixedHeightCarousel = ({ images, containerClass }) => {
     slidesToScroll: 1,
     infinite: true,
     centerMode: true,
-    autoplay: true,
+    autoplay: false,
     useTransform: false,
     dots: false,
     arrows: false,
@@ -26,7 +26,7 @@ const FixedHeightCarousel = ({ images, containerClass }) => {
     slidesToScroll: 1,
     infinite: true,
     centerMode: true,
-    autoplay: true,
+    autoplay: false,
     useTransform: false,
     dots: false,
     arrows: false,
@@ -96,7 +96,7 @@ const FixedHeightCarousel = ({ images, containerClass }) => {
               )
             })}
           </Slider>
-          <div className='carousel-arrows-container'>
+          <div className='carousel-arrows-container-fixed'>
             <button
               className='pub-arrow'
               onClick={() => slideRef.current.slickPrev()}
