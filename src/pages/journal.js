@@ -4,77 +4,37 @@ import JournalTile from '../components/journalTile'
 import Seo from '../components/seo'
 
 const Journal = ({ location, data }) => {
-  const [activeFilters, setActiveFilters] = useState([])
+  const [activeFilter, setActiveFilter] = useState()
   const [tiles, setTiles] = useState(data.contentfulJournalLandingPage.tiles)
   const filters = ['Case Study', 'Perspectives', 'Sunday Reading']
 
-  function onlyUnique(value, index, array) {
-    return array.indexOf(value) === index
-  }
-
-  const handleFilterClick = (item) => {
-    if (activeFilters.includes(item)) {
-      const newFilters = activeFilters.filter((filter) => filter !== item)
-      setActiveFilters(newFilters)
-    } else {
-      setActiveFilters([...activeFilters, item])
-    }
-  }
-
-  const filterByType = (array) => {
-    return [
-      ...array,
-      activeFilters
-        .map((term) => array.filter((item) => item.category.includes(term)))
-        .reduce((a, b) => a.concat(b), []),
-    ]
-  }
-
-  const handleFilter = () => {
-    let result = data.contentfulJournalLandingPage.tiles
-    if (activeFilters.length) {
-      result = filterByType(result)
-      result = result
-        .filter((item) => item.length)
-        .reduce((a, b) => a.concat(b), [])
-        .filter(onlyUnique)
-    }
-    setTiles(result)
-  }
-
   useEffect(() => {
-    handleFilter()
-  }, [activeFilters])
-
-  console.log(activeFilters)
+    if (activeFilter) {
+      return setTiles(data.contentfulJournalLandingPage.tiles.filter(item => item.category.includes(activeFilter)))
+    } else {
+      return setTiles(data.contentfulJournalLandingPage.tiles)
+    }
+  }, [activeFilter])
 
   return (
     <div className='journal-page-container'>
       <div className='journal-filter-container'>
         <div className='journal-filter'>
           <button
-            className='filter-btn-header'
-            onClick={() => setActiveFilters([])}
+            className={`filter-btn ${
+              !activeFilter ? 'active-filter' : 'non-active-filter'
+            }`}
+            onClick={() => setActiveFilter()}
           >
-            {activeFilters.length > 0 ? (
-              <span>
-                <em>Clear Filter</em>
-              </span>
-            ) : (
-              <span>Filter:</span>
-            )}
+            All
           </button>
           {filters.map((item, index) => (
             <button
               key={index}
               className={`filter-btn ${
-                activeFilters.length > 0
-                  ? activeFilters.includes(item)
-                    ? 'active-filter'
-                    : 'non-active-filter'
-                  : ''
+                activeFilter === item ? 'active-filter' : 'non-active-filter'
               }`}
-              onClick={() => handleFilterClick(item)}
+              onClick={() => setActiveFilter(item)}
             >
               {item === 'Case Study' ? 'Case Studies' : item}
             </button>

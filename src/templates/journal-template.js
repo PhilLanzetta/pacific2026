@@ -111,6 +111,7 @@ export const query = graphql`
           videoId: id
           videoLink
           fullBleed
+          threeQuartersWidth
           title
           roundedCorners
         }

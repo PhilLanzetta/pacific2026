@@ -5,7 +5,7 @@ import Seo from '../components/seo'
 
 const Books = ({ data, location }) => {
   const initialData = data.shopifyCollection.products
-  const [activeFilters, setActiveFilters] = useState([])
+  const [activeFilter, setActiveFilter] = useState()
   const [products, setProducts] = useState(initialData)
   const filters = [
     'Art',
@@ -16,85 +16,47 @@ const Books = ({ data, location }) => {
     'Out of Print',
   ]
 
-  console.log(initialData.map((item) => item.tags))
-
-  function onlyUnique(value, index, array) {
-    return array.indexOf(value) === index
-  }
-
-  const handleFilterClick = (item) => {
-    if (activeFilters.includes(item)) {
-      const newFilters = activeFilters.filter((filter) => filter !== item)
-      setActiveFilters(newFilters)
-    } else {
-      setActiveFilters([...activeFilters, item])
-    }
-  }
-
-  const filterByType = (array) => {
-    return [
-      ...array,
-      activeFilters
-        .map((term) => array.filter((item) => item.tags.includes(term)))
-        .reduce((a, b) => a.concat(b), []),
-    ]
-  }
-
-  const handleFilter = () => {
-    let result = initialData
-    if (activeFilters.length) {
-      result = filterByType(result)
-      result = result
-        .filter((item) => item.length)
-        .reduce((a, b) => a.concat(b), [])
-        .filter(onlyUnique)
-    }
-    setProducts(result)
-  }
-
   useEffect(() => {
-    handleFilter()
-  }, [activeFilters])
+    if (activeFilter) {
+      return setProducts(
+        initialData.filter((item) => item.tags.includes(activeFilter)),
+      )
+    } else {
+      return setProducts(initialData)
+    }
+  }, [activeFilter])
 
   return (
-      <div className='books-page'>
-        <div className='journal-filter-container'>
-          <div className='journal-filter'>
+    <div className='books-page'>
+      <div className='journal-filter-container'>
+        <div className='journal-filter'>
+          <button
+            className={`filter-btn ${
+              !activeFilter ? 'active-filter' : 'non-active-filter'
+            }`}
+            onClick={() => setActiveFilter()}
+          >
+            All
+          </button>
+          {filters.map((item, index) => (
             <button
-              className='filter-btn-header'
-              onClick={() => setActiveFilters([])}
+              key={index}
+              className={`filter-btn ${
+                activeFilter === item ? 'active-filter' : 'non-active-filter'
+              }`}
+              onClick={() => setActiveFilter(item)}
             >
-              {activeFilters.length > 0 ? (
-                <span>
-                  <em>Clear Filter</em>
-                </span>
-              ) : (
-                <span>Filter:</span>
-              )}
+              {item}
             </button>
-            {filters.map((item, index) => (
-              <button
-                key={index}
-                className={`filter-btn ${
-                  activeFilters.length > 0
-                    ? activeFilters.includes(item)
-                      ? 'active-filter'
-                      : 'non-active-filter'
-                    : ''
-                }`}
-                onClick={() => handleFilterClick(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className='product-tiles-container'>
-          {products.map((product) => (
-            <ProductTile key={product.id} product={product}></ProductTile>
           ))}
         </div>
       </div>
+      <div className='product-tiles-container'>
+        {products.map((product) => (
+          <ProductTile key={product.id} product={product}></ProductTile>
+        ))}
+      </div>
+    </div>
   )
 }
 

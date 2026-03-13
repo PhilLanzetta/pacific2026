@@ -163,7 +163,11 @@ const VideoModule = ({ content }) => {
     <Fade triggerOnce>
       <div
         className={`video-module-container ${
-          content.fullBleed ? 'fullbleed-video' : 'large-padding'
+          content.fullBleed
+            ? 'fullbleed-video'
+            : content.threeQuartersWidth
+            ? 'three-quarters-video'
+            : 'large-padding'
         } ${content.roundedCorners ? 'video-border-radius' : ''}`}
       >
         <div

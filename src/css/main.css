@@ -216,6 +216,11 @@ p {
   margin: 0 auto;
 }
 
+.three-quarters-video {
+  width: 75%;
+  margin-left: 12.5%;
+}
+
 .full-width {
   width: 100%;
 }
@@ -4040,6 +4045,11 @@ JOURNAL
 @media screen and (max-width: 700px) {
   .leadership-container {
     grid-template-columns: 1fr;
+  }
+
+  .three-quarters-video {
+    width: calc(100% - 40px);
+    margin-left: 20px;
   }
 }
 
