@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useCallback } from 'react'
 import { graphql } from 'gatsby'
 import BodyText from '../components/bodyText'
 import ColumnModule from '../components/columnModule'
@@ -8,9 +8,25 @@ import { Fade } from 'react-awesome-reveal'
 import JournalTile from '../components/journalTile'
 import Seo from '../components/seo'
 
+const useIsMobile = () => {
+  if (typeof window === 'undefined') return false
+  const { innerWidth: width, innerHeight: height } = window
+  return height > width ? width < 769 : width < 900
+}
+
 const JournalTemplate = ({ data, location }) => {
   const { title, subtitle, category, content, projectCredits, related } =
     data.contentfulJournalEntry
+
+  const activeVideoRef = useRef(null)
+  const isMobile = useIsMobile()
+
+  const handleVideoPlay = useCallback((videoHandle) => {
+    if (activeVideoRef.current) {
+      activeVideoRef.current.pause()
+    }
+    activeVideoRef.current = videoHandle
+  }, [])
 
   const formatter = new Intl.ListFormat('en', {
     style: 'short',
@@ -35,18 +51,19 @@ const JournalTemplate = ({ data, location }) => {
         >
           {content.map((item) => {
             if (item.bodyTextId) {
-              return <BodyText content={item} key={item.bodyTextId}></BodyText>
+              return <BodyText content={item} key={item.bodyTextId} />
             } else if (item.columnId) {
-              return (
-                <ColumnModule key={item.columnId} content={item}></ColumnModule>
-              )
+              return <ColumnModule key={item.columnId} content={item} />
             } else if (item.imageId) {
-              return (
-                <ImageModule key={item.imageId} content={item}></ImageModule>
-              )
+              return <ImageModule key={item.imageId} content={item} />
             } else if (item.videoId) {
               return (
-                <VideoModule key={item.videoId} content={item}></VideoModule>
+                <VideoModule
+                  key={item.videoId}
+                  content={item}
+                  onVideoPlay={handleVideoPlay}
+                  autoplayVideos={!isMobile}
+                />
               )
             } else {
               return <div>Unknown Content</div>
@@ -74,11 +91,7 @@ const JournalTemplate = ({ data, location }) => {
             <p>Related</p>
             <div className='related-journal-tile-container'>
               {related.map((item) => (
-                <JournalTile
-                  tile={item}
-                  key={item.id}
-                  related={true}
-                ></JournalTile>
+                <JournalTile tile={item} key={item.id} related={true} />
               ))}
             </div>
           </div>

@@ -4,6 +4,7 @@ import Control from './control'
 import { formatTime } from '../utils/formatTime'
 import full from '../images/fullScreen.svg'
 import small from '../images/smallScreen.svg'
+import play from '../images/play.svg'
 import screenfull from 'screenfull'
 import useWindowSize from '../utils/useWindowSize'
 import { Fade } from 'react-awesome-reveal'
@@ -11,18 +12,20 @@ import useOnScreen from '../utils/useOnScreen'
 
 let count = 0
 
-const VideoModule = ({ content }) => {
+const VideoModule = ({ content, onVideoPlay, autoplayVideos }) => {
   const { videoId, videoLink } = content
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
   const fullScreenRef = useRef(null)
   const elementRef = useRef(null)
   const isOnScreen = useOnScreen(elementRef)
+  const { width, height } = useWindowSize()
+  const isMobile = height > width ? width < 769 : width < 900
 
   const [videoState, setVideoState] = useState({
     playing: false,
-    muted: true,
-    volume: 0,
+    muted: !isMobile,
+    volume: isMobile ? 1 : 0,
     playbackRate: 1.0,
     played: 0,
     playsinline: true,
@@ -30,21 +33,35 @@ const VideoModule = ({ content }) => {
   })
 
   const [userInteraction, setUserInteraction] = useState(false)
-
   const [fullScreenState, setFullScreenState] = useState(false)
+  const [mobileHasStarted, setMobileHasStarted] = useState(false)
+  const [playerReady, setPlayerReady] = useState(false)
+  const [thumbnail, setThumbnail] = useState(null)
 
-  const { width, height } = useWindowSize()
-  const isMobile = height > width ? width < 769 : width < 900
-
+  // Fetch Vimeo thumbnail for mobile poster
   useEffect(() => {
-    if (isOnScreen && !userInteraction) {
-      setVideoState({ ...videoState, playing: true })
-    } else {
-      setVideoState({ ...videoState, playing: false })
-    }
-  }, [isOnScreen])
+    if (!videoLink) return
+    fetch(
+      `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoLink)}`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const hires = data.thumbnail_url?.replace(/_\d+$/, '_1280')
+        setThumbnail(hires || data.thumbnail_url)
+      })
+      .catch(() => null)
+  }, [videoLink])
 
-  //Destructuring the properties from the videoState
+  // Autoplay when scrolled into view — desktop only
+  useEffect(() => {
+    if (!autoplayVideos) return
+    if (isOnScreen && !userInteraction) {
+      setVideoState((prev) => ({ ...prev, playing: true }))
+    } else {
+      setVideoState((prev) => ({ ...prev, playing: false }))
+    }
+  }, [isOnScreen, autoplayVideos])
+
   const { playing, muted, volume, playbackRate, played, seeking } = videoState
 
   const currentTime = videoPlayerRef.current
@@ -57,14 +74,21 @@ const VideoModule = ({ content }) => {
   const formatCurrentTime = formatTime(currentTime)
   const formatDuration = formatTime(duration)
 
+  const handlePlay = () => {
+    if (isMobile) setMobileHasStarted(true)
+    if (onVideoPlay) {
+      onVideoPlay({
+        pause: () => setVideoState((prev) => ({ ...prev, playing: false })),
+      })
+    }
+  }
+
   const playPauseHandler = () => {
-    //plays and pause the video (toggling)
     setUserInteraction(true)
-    setVideoState({ ...videoState, playing: !videoState.playing })
+    setVideoState((prev) => ({ ...prev, playing: !prev.playing }))
   }
 
   const rewindHandler = () => {
-    //Rewinds the video player reducing 5
     setUserInteraction(true)
     if (videoPlayerRef.current.getCurrentTime() > 5) {
       videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() - 5)
@@ -74,7 +98,6 @@ const VideoModule = ({ content }) => {
   }
 
   const handleFastFoward = () => {
-    //FastFowards the video player by adding 5
     setUserInteraction(true)
     videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() + 5)
   }
@@ -83,60 +106,56 @@ const VideoModule = ({ content }) => {
     if (count > 5) {
       if (controlRef.current && fullScreenRef.current) {
         controlRef.current.style.visibility = 'hidden'
-        fullScreenRef.current.style.visibility = 'hidden' // toggling player control container
+        fullScreenRef.current.style.visibility = 'hidden'
       }
     } else {
       count += 1
     }
-
     if (!seeking) {
-      setVideoState({ ...videoState, ...state })
+      setVideoState((prev) => ({ ...prev, ...state }))
     }
   }
 
   const seekHandler = (e, value) => {
     setUserInteraction(true)
-    setVideoState({ ...videoState, played: parseFloat(value / 100) })
+    setVideoState((prev) => ({ ...prev, played: parseFloat(value / 100) }))
     videoPlayerRef.current.seekTo(parseFloat(value / 100))
   }
 
   const seekMouseUpHandler = (e, value) => {
     setUserInteraction(true)
-    setVideoState({ ...videoState, seeking: false })
+    setVideoState((prev) => ({ ...prev, seeking: false }))
     videoPlayerRef.current.seekTo(value / 100)
   }
 
   const volumeChangeHandler = (e, value) => {
     setUserInteraction(true)
     const newVolume = parseFloat(value) / 100
-
-    setVideoState({
-      ...videoState,
+    setVideoState((prev) => ({
+      ...prev,
       volume: newVolume,
-      muted: Number(newVolume) === 0 ? true : false, // volume === 0 then muted
-    })
+      muted: Number(newVolume) === 0,
+    }))
   }
 
   const volumeSeekUpHandler = (e, value) => {
     setUserInteraction(true)
     const newVolume = parseFloat(value) / 100
-
-    setVideoState({
-      ...videoState,
+    setVideoState((prev) => ({
+      ...prev,
       volume: newVolume,
-      muted: newVolume === 0 ? true : false,
-    })
+      muted: newVolume === 0,
+    }))
   }
 
   const muteHandler = () => {
     setUserInteraction(true)
-    //Mutes the video player
-    setVideoState({ ...videoState, muted: !videoState.muted })
+    setVideoState((prev) => ({ ...prev, muted: !prev.muted }))
   }
 
-  const onSeekMouseDownHandler = (e) => {
+  const onSeekMouseDownHandler = () => {
     setUserInteraction(true)
-    setVideoState({ ...videoState, seeking: true })
+    setVideoState((prev) => ({ ...prev, seeking: true }))
   }
 
   const mouseMoveHandler = () => {
@@ -177,21 +196,60 @@ const VideoModule = ({ content }) => {
           key={isMobile}
           ref={elementRef}
         >
-          <ReactPlayer
-            url={videoLink}
-            ref={videoPlayerRef}
-            width={'100%'}
-            height={'100%'}
-            className='module-video-player'
-            progressInterval={1}
-            controls={isMobile}
-            playing={playing}
-            playsinline
-            volume={volume}
-            muted={muted}
-            onProgress={progressHandler}
-            onEnded={() => videoPlayerRef.current.seekTo(0)}
-          ></ReactPlayer>
+          {/* Thumbnail overlay — visible on mobile until player is ready */}
+          {isMobile && !playerReady && (
+            <div
+              className={`mobile-play-overlay${
+                mobileHasStarted ? ' mobile-play-overlay--loading' : ''
+              }`}
+              onClick={
+                !mobileHasStarted
+                  ? () => {
+                      setMobileHasStarted(true)
+                      setUserInteraction(true)
+                      setVideoState((prev) => ({ ...prev, playing: true }))
+                    }
+                  : undefined
+              }
+              role={!mobileHasStarted ? 'button' : undefined}
+              aria-label={!mobileHasStarted ? 'Play video' : undefined}
+            >
+              {thumbnail && (
+                <img
+                  src={thumbnail}
+                  alt=''
+                  className='mobile-video-thumbnail'
+                />
+              )}
+              {/* Hide the play icon once tapped — thumbnail holds space while player loads */}
+              {!mobileHasStarted && (
+                <img src={play} alt='play' className='mobile-play-icon' />
+              )}
+            </div>
+          )}
+
+          {/* Player — mounts on mobile as soon as user taps, always mounted on desktop */}
+          {(!isMobile || mobileHasStarted) && (
+            <ReactPlayer
+              url={videoLink}
+              ref={videoPlayerRef}
+              width={'100%'}
+              height={'100%'}
+              className='module-video-player'
+              progressInterval={1}
+              controls={isMobile}
+              playing={playing}
+              playsinline
+              volume={volume}
+              muted={muted}
+              onReady={() => setPlayerReady(true)}
+              onPlay={handlePlay}
+              onProgress={progressHandler}
+              onEnded={() => videoPlayerRef.current.seekTo(0)}
+            />
+          )}
+
+          {/* Desktop controls */}
           {!isMobile && (
             <Control
               ref={controlRef}
@@ -211,7 +269,7 @@ const VideoModule = ({ content }) => {
               duration={formatDuration}
               currentTime={formatCurrentTime}
               onMouseSeekDown={onSeekMouseDownHandler}
-            ></Control>
+            />
           )}
           {!isMobile && (
             <div
@@ -219,7 +277,7 @@ const VideoModule = ({ content }) => {
               ref={fullScreenRef}
               onClick={handleClickFullscreen}
             >
-              <img src={fullScreenState ? small : full} alt='full screen'></img>
+              <img src={fullScreenState ? small : full} alt='full screen' />
             </div>
           )}
           {!isMobile && (
@@ -227,7 +285,7 @@ const VideoModule = ({ content }) => {
               className='video-play-pause-overlay'
               onClick={playPauseHandler}
               aria-label='play or pause'
-            ></button>
+            />
           )}
         </div>
       </div>
