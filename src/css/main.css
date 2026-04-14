@@ -3538,6 +3538,10 @@ JOURNAL
   margin-left: calc(var(--primary-margin) * -1);
 }
 
+.margin-width-video {
+  width: 100%;
+}
+
 .journal-credits {
   width: clamp(200px, 35%, 500px);
   margin: 6vw auto;

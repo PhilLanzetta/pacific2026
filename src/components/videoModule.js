@@ -186,6 +186,8 @@ const VideoModule = ({ content, onVideoPlay, autoplayVideos }) => {
             ? 'fullbleed-video'
             : content.threeQuartersWidth
             ? 'three-quarters-video'
+            : content.marginWidth
+            ? 'margin-width-video'
             : 'large-padding'
         } ${content.roundedCorners ? 'video-border-radius' : ''}`}
       >
