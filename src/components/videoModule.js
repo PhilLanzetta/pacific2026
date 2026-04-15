@@ -13,7 +13,7 @@ import useOnScreen from '../utils/useOnScreen'
 let count = 0
 
 const VideoModule = ({ content, onVideoPlay, autoplayVideos }) => {
-  const { videoId, videoLink } = content
+  const { videoId, videoLink, autoplay } = content
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
   const fullScreenRef = useRef(null)
@@ -24,8 +24,8 @@ const VideoModule = ({ content, onVideoPlay, autoplayVideos }) => {
 
   const [videoState, setVideoState] = useState({
     playing: false,
-    muted: !isMobile,
-    volume: isMobile ? 1 : 0,
+    muted: autoplay && !isMobile,
+    volume: isMobile || !autoplay ? 1 : 0,
     playbackRate: 1.0,
     played: 0,
     playsinline: true,
@@ -54,7 +54,7 @@ const VideoModule = ({ content, onVideoPlay, autoplayVideos }) => {
 
   // Autoplay when scrolled into view — desktop only
   useEffect(() => {
-    if (!autoplayVideos) return
+    if (!autoplayVideos || !autoplay) return
     if (isOnScreen && !userInteraction) {
       setVideoState((prev) => ({ ...prev, playing: true }))
     } else {

@@ -14,6 +14,8 @@ const BodyText = ({ content }) => {
       classes.push('medium-margin')
     } else if (content.padding === 'Small') {
       classes.push('primary-margin')
+    } else if (content.padding === 'XL') {
+      classes.push('xl-margin-text')
     }
   }
 

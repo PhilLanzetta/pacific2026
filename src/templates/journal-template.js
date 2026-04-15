@@ -126,6 +126,7 @@ export const query = graphql`
           fullBleed
           marginWidth
           threeQuartersWidth
+          autoplay
           title
           roundedCorners
         }

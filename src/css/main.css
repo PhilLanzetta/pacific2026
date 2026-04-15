@@ -207,6 +207,11 @@ p {
   margin: 6vw auto;
 }
 
+.xl-margin-text {
+  width: 45%;
+  margin: 6vw auto;
+}
+
 .large-margin {
   margin: var(--large-margin);
 }
@@ -3682,7 +3687,7 @@ JOURNAL
     margin-left: calc(var(--primary-margin) * -1);
   }
 
-  .journal-page-container .large-margin-text {
+  .journal-page-container .large-margin-text, .xl-margin-text {
     margin-left: 0px;
     margin-right: 0px;
     width: 100%;
@@ -4097,7 +4102,7 @@ JOURNAL
 
 .mobile-play-icon {
   position: relative;
-  width: 64px;
+  width: 10vw;
   height: 64px;
   z-index: 1;
 }
